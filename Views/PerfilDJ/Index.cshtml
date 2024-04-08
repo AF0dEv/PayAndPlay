@@ -3,51 +3,96 @@
 <span><h1>Perfil de @Context.Session.GetString("UTILIZADOR")</h1> Saldo: @ViewBag.SALDO</span>
 <div>
     <h2>LISTAGENS</h2>
-    <form method="post">
-    @Html.RadioButton("rbtEscolha", 1, true) <label>Ganhos Por Mês</label>
-    @Html.RadioButton("rbtEscolha", 2, false) <label>Ganhos Por Periodo</label>
-    <button type="submit">Pesquisar</button>
+    <form method="post" action="@Url.Action("Index", "PerfilDJ")">
+        @Html.RadioButton("rbtEscolha", 1, ViewBag.RBTESCOLHA == 1, new { onclick = "this.form.submit()" }) <label>Ganhos Por Mês</label>
+        @Html.RadioButton("rbtEscolha", 2, ViewBag.RBTESCOLHA == 2, new { onclick = "this.form.submit()" }) <label>Ganhos Por Periodo</label>
+
     </form>
+
     @{
-        if (ViewBag.MESES == true)
+        @if (ViewBag.MESES == true)
         {
-            <label for="month" onchange="this.form.submit()">Selecione Mês:</label>
-            <br />
-            <select id="month" >
-                @for (Int16 i = 0; i < 12; i++)
-                {
-                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
-                }
-            </select>
+            <form method="post" action="@Url.Action("MostrarGanhosMes", "PerfilDJ")">
+                <label for="month">Selecione Mês:</label>
+                <br />
+                <select id="month" name="month" onchange="this.form.submit()">
+                    @for (Int16 i = 0; i < 12; i++)
+                    {
+                        if (ViewBag.month == i)
+                        {
+                            <option value="@i" selected>@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                    }
+                </select>
+            </form>
         }
         else if (ViewBag.PERIODO == true)
         {
-            // fiquei aqui a tentar que as combobox o evento onchange chamasse o submit do form, ainda nao chama, ver que metodo esta a chamar quando faz submit
-            <label for="monthBegin">Selecione o Mês Inicial:</label>
-            <br />
-            <select id="monthBegin" onchange="this.form.submit()">
-                @for (Int16 i = 0; i < 12; i++)
-                {
-                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
-                }
-            </select>
-            <br />
-            <label for="monthEnd" onchange="this.form.submit()">Selecione o Mês Final:</label>
-            <br />
-            <select id="monthEnd">
-                @for (Int16 i = 0; i < 12; i++)
-                {
-                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
-                }
-            </select>
-        }
-   
-        if (true)
-        {
-            
+            <form method="post" action="@Url.Action("MostrarGanhosPeriodo", "PerfilDJ")">
+                <label for="monthBegin">Selecione o Mês Inicial:</label>
+                <br />
+                <select id="monthBegin" name="monthBegin">
+                    @for (Int16 i = 0; i < 12; i++)
+                    {
+                        if (ViewBag.monthBegin == i)
+                        {
+                            <option value="@i" selected>@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                    }
+                </select>
+                <br />
+                <label for="monthEnd">Selecione o Mês Final:</label>
+                <br />
+                <select id="monthEnd" name="monthEnd" onchange="this.form.submit()">
+                    @for (Int16 i = 0; i < 12; i++)
+                    {
+                        if (ViewBag.monthEnd == i)
+                        {
+                            <option value="@i" selected>@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                        }
+                    }
+                </select>
+            </form>
         }
 
+}
+@{
     <ul class="list-group">
+    @if (ViewBag.GANHOSMES != null){
+        <li class="list-group-item">
+            Ganhos do Mês : @ViewBag.GANHOSMES
+        </li>
+         <li class="list-group-item">
+            Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
+        </li>
+        <li class="list-group-item">
+            Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
+        </li>
+        <li class="list-group-item">
+            Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
+        </li>
+        <li class="list-group-item">
+            Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
+        </li>
+        <li class="list-group-item">
+            Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
+        </li>
+        <li class="list-group-item">
+            Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+        </li>
+    }else{
         <li class="list-group-item">
             Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
         </li>
@@ -65,6 +110,8 @@
         </li>
         <li class="list-group-item">
             Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+        </li>
+            }
     </ul>
 
 }

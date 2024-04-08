@@ -41,6 +41,7 @@ namespace PayAndPlay.Controllers
             ls = new Listagem(_context);
             if (rbtEscolha == null)
             {
+                ViewBag.RBTESCOLHA = rbtEscolha;
                 ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
@@ -52,6 +53,7 @@ namespace PayAndPlay.Controllers
             }
             else if (rbtEscolha == 1)
             {
+                ViewBag.RBTESCOLHA = rbtEscolha;
                 ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
@@ -65,6 +67,7 @@ namespace PayAndPlay.Controllers
             }
             else if (rbtEscolha == 2)
             {
+                ViewBag.RBTESCOLHA = rbtEscolha;
                 ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
@@ -78,11 +81,13 @@ namespace PayAndPlay.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult MostrarGanhosMesPeriodo(int? month, int? monthBegin, int? monthEnd)
+        public IActionResult MostrarGanhosMes(int? month)
         {
             ls = new Listagem(_context);
             if (month != null)
             {
+                ViewBag.MONTH = month;
+                ViewBag.RBTESCOLHA = 1;
                 ViewBag.GANHOSMES = ls.ListarGanhosMes(month, int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
@@ -93,10 +98,22 @@ namespace PayAndPlay.Controllers
                 ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MESES = true;
                 ViewBag.PERIODO = false;
-                return View();
-            }
-            else if(monthBegin != null && monthEnd != null)
+                return View("Index");
+            }else
             {
+                return View("Index");
+            }
+            
+        }
+        // fiquei aqui, falta fazer a parte de mostrar os ganhos por periodo, e adicionar um metodo que entregue as viewbags para a view, reutilizando o codigo em vez de estar a repetir
+        [HttpPost]
+        public IActionResult MostrarGanhosPeriodo(int? monthBegin, int? monthEnd)
+        {
+            if (monthBegin != null && monthEnd != null)
+            {
+                ViewBag.MONTHBEGIN = monthBegin;
+                ViewBag.MONTHEND = monthEnd;
+                ViewBag.RBTESCOLHA = 2;
                 ViewBag.GANHOSPERIODO = ls.ListarGanhosPeriodo(monthBegin, monthEnd, int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
@@ -107,11 +124,11 @@ namespace PayAndPlay.Controllers
                 ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
                 ViewBag.MESES = false;
                 ViewBag.PERIODO = true;
-                return View();
+                return View("Index");
             }
             else
             {
-                return View();
+                return View("Index");
             }
         }
     }

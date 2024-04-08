@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\controllers\\perfildjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\perfildjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\views\\perfildj\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\perfildj\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\models\\listagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\models\\listagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:models\\listagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\controllers\\perfildjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\perfildjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,33 +34,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PerfilDJ\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilDJ\\Index.cshtml",
               "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PerfilDJ\\Index.cshtml",
               "RelativeToolTip": "Views\\PerfilDJ\\Index.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAACgAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAABIAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-08T15:43:25.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "PerfilDJController.cs",
               "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PerfilDJController.cs",
               "RelativeDocumentMoniker": "Controllers\\PerfilDJController.cs",
               "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PerfilDJController.cs",
               "RelativeToolTip": "Controllers\\PerfilDJController.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAlwD4AAAAoAAAA",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAIwGsAAAC5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-06T15:00:37.582Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Listagem.cs",
               "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Models\\Listagem.cs",
               "RelativeDocumentMoniker": "Models\\Listagem.cs",
@@ -79,7 +79,7 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAkAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-06T11:41:19.748Z",
               "EditorCaption": ""
