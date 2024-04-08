@@ -1,0 +1,70 @@
+﻿
+@using System.Globalization
+<span><h1>Perfil de @Context.Session.GetString("UTILIZADOR")</h1> Saldo: @ViewBag.SALDO</span>
+<div>
+    <h2>LISTAGENS</h2>
+    <form method="post">
+    @Html.RadioButton("rbtEscolha", 1, true) <label>Ganhos Por Mês</label>
+    @Html.RadioButton("rbtEscolha", 2, false) <label>Ganhos Por Periodo</label>
+    <button type="submit">Pesquisar</button>
+    </form>
+    @{
+        if (ViewBag.MESES == true)
+        {
+            <label for="month" onchange="this.form.submit()">Selecione Mês:</label>
+            <br />
+            <select id="month" >
+                @for (Int16 i = 0; i < 12; i++)
+                {
+                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                }
+            </select>
+        }
+        else if (ViewBag.PERIODO == true)
+        {
+            // fiquei aqui a tentar que as combobox o evento onchange chamasse o submit do form, ainda nao chama, ver que metodo esta a chamar quando faz submit
+            <label for="monthBegin">Selecione o Mês Inicial:</label>
+            <br />
+            <select id="monthBegin" onchange="this.form.submit()">
+                @for (Int16 i = 0; i < 12; i++)
+                {
+                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                }
+            </select>
+            <br />
+            <label for="monthEnd" onchange="this.form.submit()">Selecione o Mês Final:</label>
+            <br />
+            <select id="monthEnd">
+                @for (Int16 i = 0; i < 12; i++)
+                {
+                    <option value="@i">@DateTimeFormatInfo.InvariantInfo.MonthNames[i]</option>
+                }
+            </select>
+        }
+   
+        if (true)
+        {
+            
+        }
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
+        </li>
+        <li class="list-group-item">
+            Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
+        </li>
+        <li class="list-group-item">
+            Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
+        </li>
+        <li class="list-group-item">
+            Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
+        </li>
+        <li class="list-group-item">
+            Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
+        </li>
+        <li class="list-group-item">
+            Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+    </ul>
+
+}

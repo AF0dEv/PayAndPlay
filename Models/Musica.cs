@@ -7,6 +7,6 @@
         public string? Nome { get; set; }
         public string? Artista { get; set; }
         public int? Duracao { get; set; }
-        public Decimal Custo { get; set; }
+        public decimal Custo { get; set; }
     }
 }

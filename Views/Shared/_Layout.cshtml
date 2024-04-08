@@ -29,14 +29,50 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">LOGIN</a>
                                 </li>
                             </ul>
-                        }else
+                        }
+                        else if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("ADMIN") == "true" && Context.Session.GetString("PERFIL") == "3")
                         {
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="DJs" asp-action="Index">DJs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Utilizadores" asp-action="Index">Utilizadores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Musicas" asp-action="Index">Musicas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="PlayLists" asp-action="Index">PlayLists</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="MusicasInPlayLists" asp-action="Index">Musicas In PlayLists</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Perfis" asp-action="Index">Perfis</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Pedidos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="LogOut" asp-action="Index">LogOut</a>
+                                </li>
+                            </ul>
+                        }
+                        else if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("PERFIL") == "2" && Context.Session.GetString("ADMIN") == "false")
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="PerfilDJ" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Musicas" asp-action="Index">Musicas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="PlayLists" asp-action="Index">PlayLists</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="LogOut" asp-action="Index">LogOut</a>
                                 </li>
                             </ul>
                         }

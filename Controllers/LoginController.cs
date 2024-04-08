@@ -19,7 +19,7 @@ namespace PayAndPlay.Controllers
             return View();
         }
 
-        public IActionResult LoginUtilizador(string? email, string? password)
+        public IActionResult LoginUtilizador(string email, string password)
         {
             Utilizador? user = _context.Tutilizadores.FirstOrDefault(u => u.Email == email && u.Password == password && u.confirmPassword == password);
             if (user == null)
@@ -29,17 +29,20 @@ namespace PayAndPlay.Controllers
             else if (user.Is_Admin == true)
             {
                 HttpContext.Session.SetString("UTILIZADOR", user.UserName!);
+                HttpContext.Session.SetString("ID", user.ID.ToString()!);
+                HttpContext.Session.SetString("PERFIL", "3");
                 HttpContext.Session.SetString("ADMIN", "true");
-                return Redirect(HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
             }
             else
             {
+                HttpContext.Session.SetString("PERFIL", "1");
                 HttpContext.Session.SetString("UTILIZADOR", user.UserName!);
-                return Redirect(HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
             }
         }
 
-        public IActionResult LoginDJ(string? email, string? password)
+        public IActionResult LoginDJ(string email, string password)
         {
             DJ? dj = _context.Tdjs.FirstOrDefault(u => u.Email == email && u.Password == password && u.confirmPassword == password);
             if (dj == null)
@@ -48,8 +51,11 @@ namespace PayAndPlay.Controllers
             }
             else
             {
+                HttpContext.Session.SetString("ADMIN", "false");
+                HttpContext.Session.SetString("PERFIL", "2");
                 HttpContext.Session.SetString("UTILIZADOR", dj.UserName!);
-                return Redirect(HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                HttpContext.Session.SetString("ID", dj.ID.ToString()!);
+                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
             }
         }
     }
