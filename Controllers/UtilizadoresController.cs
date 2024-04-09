@@ -48,7 +48,7 @@ namespace PayAndPlay.Controllers
         // GET: Utilizadores/Create
         public IActionResult Create()
         {
-            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID");
+            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace PayAndPlay.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", utilizador.PerfilId);
+            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", utilizador.PerfilId);
             return View(utilizador);
         }
 
@@ -82,7 +82,7 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", utilizador.PerfilId);
+            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", utilizador.PerfilId);
             return View(utilizador);
         }
 
@@ -118,7 +118,7 @@ namespace PayAndPlay.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", utilizador.PerfilId);
+            ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", utilizador.PerfilId);
             return View(utilizador);
         }
 

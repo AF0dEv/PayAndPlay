@@ -51,7 +51,7 @@
                 <br />
                 <label for="monthEnd">Selecione o Mês Final:</label>
                 <br />
-                <select id="monthEnd" name="monthEnd" onchange="this.form.submit()">
+                <select id="monthEnd" name="monthEnd">
                     @for (Int16 i = 0; i < 12; i++)
                     {
                         if (ViewBag.monthEnd == i)
@@ -64,54 +64,135 @@
                         }
                     }
                 </select>
+                <div class="form-group">
+                    <input type="submit" value="Procurar" class="btn btn-primary" />
+                </div>
             </form>
         }
 
 }
 @{
-    <ul class="list-group">
-    @if (ViewBag.GANHOSMES != null){
-        <li class="list-group-item">
-            Ganhos do Mês : @ViewBag.GANHOSMES
-        </li>
-         <li class="list-group-item">
-            Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
-        </li>
-        <li class="list-group-item">
-            Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
-        </li>
-        <li class="list-group-item">
-            Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
-        </li>
-        <li class="list-group-item">
-            Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
-        </li>
-        <li class="list-group-item">
-            Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
-        </li>
-        <li class="list-group-item">
-            Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
-        </li>
-    }else{
-        <li class="list-group-item">
-            Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
-        </li>
-        <li class="list-group-item">
-            Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
-        </li>
-        <li class="list-group-item">
-            Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
-        </li>
-        <li class="list-group-item">
-            Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
-        </li>
-        <li class="list-group-item">
-            Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
-        </li>
-        <li class="list-group-item">
-            Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
-        </li>
-            }
-    </ul>
 
+    @if (ViewBag.GANHOSMES != null){
+            <canvas id="MonthChart"></canvas>
+            <ul class="list-group">
+             <li class="list-group-item">
+                Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+            </li>
+            </ul>
+
+        }else if (ViewBag.GANHOSPERIODO != null)
+        {
+            <canvas id="PeriodChart"></canvas>
+        <ul class="list-group">
+            <li class="list-group-item">
+                Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+            </li>
+        </ul>
+        }
+        else{
+        <ul class="list-group">
+            <li class="list-group-item">
+                Musica Mais Pedida : @ViewBag.MUSICAMAISPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Musica Menos Pedida : @ViewBag.MUSICAMENOSPEDIDAS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Mais Pedida : @ViewBag.UTILIZADORMAISPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador Com Menos Pedida : @ViewBag.UTILIZADORMENOSPEDIDOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Mais Gastos : @ViewBag.UTILIZADORMAISGASTOS
+            </li>
+            <li class="list-group-item">
+                Utilizador com Menos Gastos : @ViewBag.UTILIZADORMENOSGASTOS
+            </li>
+        </ul>
+        }
 }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('MonthChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Ganhos do Mês'],
+                datasets: [{
+                    label: 'Total Ganhos',
+                    data: [@ViewBag.GANHOSMES],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById('PeriodChart').getContext('2d');
+        @if (ViewBag.GANHOSPERIODO != null)
+        {
+            <text>
+                    var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: @Html.Raw(Json.Serialize(ViewBag.GANHOSPERIODO.Keys)),
+                        datasets: [{
+                            label: 'Winnings',
+                            data: @Html.Raw(Json.Serialize(ViewBag.GANHOSPERIODO.Values)),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </text>
+        }
+    </script>
+

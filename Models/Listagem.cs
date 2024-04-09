@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PayAndPlay.Data;
+using System.Globalization;
 using System.Linq;
 
 namespace PayAndPlay.Models
@@ -28,14 +29,22 @@ namespace PayAndPlay.Models
 
             return GanhosMes;
         }
-        public decimal ListarGanhosPeriodo(int? dataInicio, int? dataFim, int DJ_Id)
+        public Dictionary<string, decimal> ListarGanhosPeriodo(int? dataInicio, int? dataFim, int DJ_Id)
         {
-            // Listar os ganhos de um DJ num período
-            decimal GanhosPeriodo = _context.Tpedidos.Where(p => p.DJId == DJ_Id && p.Data.Month >= dataInicio && p.Data.Month <= dataFim).Sum(p => p.Custo_Pedido);
+            // Listar os ganhos de um DJ por período
+            var GanhosPeriodo = _context.Tpedidos
+                .Where(p => p.DJId == DJ_Id && p.Data.Month >= dataInicio && p.Data.Month <= dataFim)
+                .GroupBy(p => p.Data.Month)
+                .Select(g => new
+                {
+                    Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(g.Key),
+                    TotalWinnings = g.Sum(p => p.Custo_Pedido)
+                })
+                .ToDictionary(x => x.Month, x => x.TotalWinnings);
 
             return GanhosPeriodo;
         }
-        // test this
+
         public string ListarMusicasMaisPedidas(int DJId)
         {
             // Listar as músicas mais pedidas de um DJ 
@@ -115,31 +124,38 @@ namespace PayAndPlay.Models
 
         // LISTAGENS UTILIZADORES
 
-        public decimal ListarGastosMes(DateOnly data, int UtilizadorId)
+        public Dictionary<string, decimal> ListarGastosMesPorDj(int? data, int UtilizadorId)
         {
-            // Listar os gastos de um utilizador num mês
-            decimal GastosMes = _context.Tpedidos
-                .Where(p => p.UtilizadorId == UtilizadorId && p.Data.Month == data.Month && p.Data.Year == data.Year)
-                .Sum(p => p.Custo_Pedido);
+            // Listar os gastos de um utilizador num mês por DJ
+            var GastosMes = _context.Tpedidos
+                .Where(p => p.UtilizadorId == UtilizadorId && (data == null || p.Data.Month == data))
+                .GroupBy(p => p.DJId)
+                .Select(g => new
+                {
+                    DJName = g.First().DJ.UserName,
+                    TotalSpent = g.Sum(p => p.Custo_Pedido)
+                })
+                .ToDictionary(x => x.DJName, x => x.TotalSpent);
 
             return GastosMes;
         }
-        public decimal ListarGastosPeriodo(DateOnly dataInicio, DateOnly dataFim, int UtilizadorId)
+
+        public Dictionary<string, decimal> ListarGastosPeriodo(int? dataInicio, int? dataFim, int UtilizadorId)
         {
-            // Listar os gastos de um utilizador num período
-            decimal GastosPeriodo = _context.Tpedidos
-                .Where(p => p.UtilizadorId == UtilizadorId && p.Data >= dataInicio && p.Data <= dataFim)
-                .Sum(p => p.Custo_Pedido);
+            // Listar os gastos de um utilizador num período por DJ
+            var GastosPeriodo = _context.Tpedidos
+                .Where(p => p.UtilizadorId == UtilizadorId && p.Data.Month >= dataInicio && p.Data.Month <= dataFim)
+                .GroupBy(p => p.DJId)
+                .Select(g => new
+                {
+                    DJName = g.First().DJ.UserName,
+                    TotalSpent = g.Sum(p => p.Custo_Pedido)
+                })
+                .ToDictionary(x => x.DJName, x => x.TotalSpent);
 
             return GastosPeriodo;
         }
-        public decimal ListarGastosPorDj(int UtilizadorId, int DjId)
-        {
-            // Listar os gastos de um utilizador por DJ
-            decimal GastosDj = _context.Tpedidos
-                .Where(p => p.UtilizadorId == UtilizadorId && p.DJId == DjId)
-                .Sum(p => p.Custo_Pedido);
-            return GastosDj;
-        }
+
+
     }
 }

@@ -67,7 +67,7 @@ namespace PayAndPlay.Controllers
             }
             else
             {
-                ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID");
+                ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil");
                 return View();
             }
         }
@@ -117,7 +117,7 @@ namespace PayAndPlay.Controllers
                 {
                     return NotFound();
                 }
-                ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", dJ.PerfilId);
+                ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", dJ.PerfilId);
                 return View(dJ);
             }
         }

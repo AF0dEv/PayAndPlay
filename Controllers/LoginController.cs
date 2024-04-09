@@ -34,12 +34,15 @@ namespace PayAndPlay.Controllers
                 HttpContext.Session.SetString("ADMIN", "true");
                 return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
             }
-            else
+            else if (user.Is_Admin == false && user.PerfilId == 1)
             {
                 HttpContext.Session.SetString("PERFIL", "1");
+                HttpContext.Session.SetString("ADMIN", "false");
+                HttpContext.Session.SetString("ID", user.ID.ToString()!);
                 HttpContext.Session.SetString("UTILIZADOR", user.UserName!);
                 return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
             }
+            return View();
         }
 
         public IActionResult LoginDJ(string email, string password)

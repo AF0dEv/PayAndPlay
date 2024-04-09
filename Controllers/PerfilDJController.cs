@@ -10,23 +10,27 @@ namespace PayAndPlay.Controllers
         
         public PerfilDJController(ApplicationDbContext context)
         {
-
             _context = context;
         }
         private Listagem ls;
         
-        public IActionResult Index()
+        private void getViewBags()
         {
             ls = new Listagem(_context);
+            ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.UTILIZADORMAISGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
+            ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+        }
+
+        public IActionResult Index()
+        {
             if (HttpContext.Session.GetString("ADMIN") == "false" && HttpContext.Session.GetString("PERFIL") == "2" && HttpContext.Session.GetString("UTILIZADOR") != "" || HttpContext.Session.GetString("UTILIZADOR") != null)
             {  
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMIASGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+                getViewBags();
                 return View();
             }
             else
@@ -42,25 +46,13 @@ namespace PayAndPlay.Controllers
             if (rbtEscolha == null)
             {
                 ViewBag.RBTESCOLHA = rbtEscolha;
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMIASGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+                getViewBags();
                 return View();
             }
             else if (rbtEscolha == 1)
             {
                 ViewBag.RBTESCOLHA = rbtEscolha;
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+                getViewBags();
                 ViewBag.MESES = true;
                 ViewBag.PERIODO = false;
                 return View();
@@ -68,13 +60,7 @@ namespace PayAndPlay.Controllers
             else if (rbtEscolha == 2)
             {
                 ViewBag.RBTESCOLHA = rbtEscolha;
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMIASGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+                getViewBags();
                 ViewBag.MESES = false;
                 ViewBag.PERIODO = true;
             }
@@ -88,14 +74,8 @@ namespace PayAndPlay.Controllers
             {
                 ViewBag.MONTH = month;
                 ViewBag.RBTESCOLHA = 1;
-                ViewBag.GANHOSMES = ls.ListarGanhosMes(month, int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMIASGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
+                ViewBag.GANHOSMES = ls.ListarGanhosMes(month +1, int.Parse(HttpContext.Session.GetString("ID")));
+                getViewBags();
                 ViewBag.MESES = true;
                 ViewBag.PERIODO = false;
                 return View("Index");
@@ -105,26 +85,34 @@ namespace PayAndPlay.Controllers
             }
             
         }
-        // fiquei aqui, falta fazer a parte de mostrar os ganhos por periodo, e adicionar um metodo que entregue as viewbags para a view, reutilizando o codigo em vez de estar a repetir
         [HttpPost]
         public IActionResult MostrarGanhosPeriodo(int? monthBegin, int? monthEnd)
         {
-            if (monthBegin != null && monthEnd != null)
+            ls = new Listagem(_context);
+            if (monthBegin < monthEnd)
             {
-                ViewBag.MONTHBEGIN = monthBegin;
-                ViewBag.MONTHEND = monthEnd;
-                ViewBag.RBTESCOLHA = 2;
-                ViewBag.GANHOSPERIODO = ls.ListarGanhosPeriodo(monthBegin, monthEnd, int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.SALDO = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMAISPEDIDAS = ls.ListarMusicasMaisPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MUSICAMENOSPEDIDAS = ls.ListarMusicasMenosPedidas(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMAISPEDIDOS = ls.ListarUtilizadorMaisPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSPEDIDOS = ls.ListarUtilizadorMenosPedidos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMIASGASTOS = ls.ListarUtilizadorMaisGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.UTILIZADORMENOSGASTOS = ls.ListarUtilizadorMenosGastos(int.Parse(HttpContext.Session.GetString("ID")));
-                ViewBag.MESES = false;
-                ViewBag.PERIODO = true;
-                return View("Index");
+                if (monthBegin != null && monthEnd != null)
+                {
+                    ViewBag.MONTHBEGIN = monthBegin;
+                    ViewBag.MONTHEND = monthEnd;
+                    ViewBag.RBTESCOLHA = 2;
+                    var ganhosPorPeriodo = ls.ListarGanhosPeriodo(monthBegin + 1, monthEnd + 1, int.Parse(HttpContext.Session.GetString("ID")));
+                    if (ganhosPorPeriodo == null)
+                    {
+                        return View("Index");
+                    }else
+                    {
+                        ViewBag.GANHOSPERIODO = ganhosPorPeriodo;
+                        getViewBags();
+                        ViewBag.MESES = false;
+                        ViewBag.PERIODO = true;
+                        return View("Index");
+                    }
+                }
+                else
+                {
+                    return View("Index");
+                }
             }
             else
             {

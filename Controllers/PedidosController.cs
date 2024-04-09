@@ -50,9 +50,9 @@ namespace PayAndPlay.Controllers
         // GET: Pedidos/Create
         public IActionResult Create()
         {
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID");
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName");
             ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID");
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "ID");
+            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName");
             return View();
         }
 
@@ -69,9 +69,9 @@ namespace PayAndPlay.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", pedido.DJId);
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
             ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "ID", pedido.UtilizadorId);
+            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
             return View(pedido);
         }
 
@@ -88,9 +88,9 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", pedido.DJId);
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
             ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "ID", pedido.UtilizadorId);
+            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
             return View(pedido);
         }
 

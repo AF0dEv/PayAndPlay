@@ -48,7 +48,7 @@ namespace PayAndPlay.Controllers
         // GET: PlayLists/Create
         public IActionResult Create()
         {
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID");
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace PayAndPlay.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", playList.DJId);
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", playList.DJId);
             return View(playList);
         }
 
@@ -82,7 +82,7 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", playList.DJId);
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", playList.DJId);
             return View(playList);
         }
 
@@ -118,7 +118,7 @@ namespace PayAndPlay.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", playList.DJId);
+            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", playList.DJId);
             return View(playList);
         }
 

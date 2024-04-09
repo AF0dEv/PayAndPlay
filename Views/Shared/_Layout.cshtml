@@ -59,6 +59,17 @@
                                 </li>
                             </ul>
                         }
+                        else if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("PERFIL") == "1" && Context.Session.GetString("ADMIN") == "false")
+                        {
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="PerfilUser" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="LogOut" asp-action="Index">LogOut</a>
+                                </li>
+                            </ul>
+                        }
                         else if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("PERFIL") == "2" && Context.Session.GetString("ADMIN") == "false")
                         {
                             <ul class="navbar-nav flex-grow-1">
@@ -70,6 +81,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="PlayLists" asp-action="Index">PlayLists</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="MusicasInPlayLists" asp-action="Index">Musicas In PlayList</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="LogOut" asp-action="Index">LogOut</a>
