@@ -76,7 +76,7 @@ namespace PayAndPlay.Controllers
         public IActionResult MostrarGastosPeriodo(int? monthBegin, int? monthEnd)
         {
             ls = new Listagem(_context);
-            if (monthBegin < monthEnd)
+            if (monthBegin <= monthEnd)
             {
                 if (monthBegin != null && monthEnd != null)
                 {
