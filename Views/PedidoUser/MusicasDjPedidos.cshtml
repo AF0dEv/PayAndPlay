@@ -1,10 +1,10 @@
-﻿@model IEnumerable<PayAndPlay.Models.MusicaInPlayList>
+﻿@model PayAndPlay.Models.MusicaInPlayList
 
 @{
     ViewData["Title"] = "Musicas DJ";
 }
 <h1>Selecione Música</h1>
-    @if (ViewBag.MUSICASPLAYLISTDJ != null)
+    @if (ViewBag.MUSICAS != null && ViewBag.PLAYLISTS != null)
 {
     
     <table class="table">
@@ -20,17 +20,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (MusicaInPlayList item in ViewBag.MUSICASPLAYLISTDJ)
+            @foreach (Musica item in ViewBag.MUSICAS)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PlayList.Nome)
+                        @ViewBag.PLAYLISTS.Nome
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Musica.Nome)
+                        @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        <a asp-action="MusicasDjPedidos" asp-route-id="@item.ID">Selecionar</a>
+                        <form>
+                            <button type="submit" formmethod="post" asp-route-id="@item.ID">Selecionar</button>
+                        </form>
                     </td>
                 </tr>
             }

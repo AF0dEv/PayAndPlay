@@ -23,7 +23,9 @@
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        <button type="submit">Selecionar</button>
+                        <form>
+                        <button type="submit" formmethod="post" asp-route-id="@item.ID">Selecionar</button>
+                        </form>
                     </td>
                 </tr>
             }

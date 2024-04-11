@@ -1,0 +1,178 @@
+﻿@model IEnumerable<PayAndPlay.Models.Pedido>
+<h1>PEDIDOS</h1>
+<hr />
+<br />
+<h2>Pedidos Pendentes</h2>
+@{
+    if (ViewBag.PEDIDOSPENDENTES != null)
+    {
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Custo_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilizador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MusicaInPlayList)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Pedido p in ViewBag.PEDIDOSPENDENTES) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => p.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => p.Custo_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => p.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => p.Utilizador.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => p.DJ.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+            </td>
+            <td>
+            <form>
+                 <button asp-action="ConcluirPedido" asp-route-id="@p.ID">ACEITAR</button> |
+                 <button asp-action="RecusarPedido" asp-route-id="@p.ID">RECUSAR</button>
+            </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<hr />
+<br />
+<h2>Pedidos Concluidos</h2>
+<hr />
+    }
+    if (ViewBag.PEDIDOSCONCLUIDOS != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Custo_Pedido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Utilizador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DJ)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusicaInPlayList)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Pedido p in ViewBag.PEDIDOSCONCLUIDOS)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Custo_Pedido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Utilizador.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.DJ.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <hr />
+    <br />
+    <h2>Pedidos Recusados</h2>
+    <hr />
+
+    if (ViewBag.PEDIDOSRECUSADOS != null)
+    {
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Custo_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Utilizador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MusicaInPlayList)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Pedido p in ViewBag.PEDIDOSRECUSADOS)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Custo_Pedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Utilizador.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.DJ.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+}

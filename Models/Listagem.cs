@@ -18,14 +18,14 @@ namespace PayAndPlay.Models
         {
             // Calcular o saldo de um DJ
             decimal Saldo = _context.Tpedidos
-                .Where(p => p.DJId == DjId && p.Estado == "PAGO")
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
                 .Sum(p => p.Custo_Pedido);
             return Saldo;
         }
         public decimal ListarGanhosMes(int? data, int DJ_Id)
         {
             // Listar os ganhos de um DJ num mês
-            decimal GanhosMes = _context.Tpedidos.Where(p => p.DJId == DJ_Id && p.Data.Month == data).Sum(p => p.Custo_Pedido);
+            decimal GanhosMes = _context.Tpedidos.Where(p => p.DJId == DJ_Id && p.Data.Month == data && p.Estado == "CONCLUIDO").Sum(p => p.Custo_Pedido);
 
             return GanhosMes;
         }
@@ -33,7 +33,7 @@ namespace PayAndPlay.Models
         {
             // Listar os ganhos de um DJ por período
             var GanhosPeriodo = _context.Tpedidos
-                .Where(p => p.DJId == DJ_Id && p.Data.Month >= dataInicio && p.Data.Month <= dataFim)
+                .Where(p => p.DJId == DJ_Id && p.Data.Month >= dataInicio && p.Data.Month <= dataFim && p.Estado == "CONCLUIDO")
                 .GroupBy(p => p.Data.Month)
                 .Select(g => new
                 {
@@ -50,7 +50,7 @@ namespace PayAndPlay.Models
             string NomeMusicasMaisPedidas = "";
             // Listar as músicas mais pedidas de um DJ 
             Musica MusicasMaisPedidas = _context.Tpedidos
-                .Where(p => p.DJId == DJId)
+                .Where(p => p.DJId == DJId && p.Estado == "CONCLUIDO")
                 .GroupBy(m => m.MusicaInPlayList.Musica.Artista)
                 .OrderBy(g => g.Count())
                 .Select(m => m.FirstOrDefault().MusicaInPlayList.Musica)
@@ -71,7 +71,7 @@ namespace PayAndPlay.Models
             string NomeMusicasMenosPedidas = "";
             // Listar as músicas menos pedidas de um DJ 
             Musica MusicasMenosPedidas = _context.Tpedidos
-                .Where(p => p.DJId == DJId)
+                .Where(p => p.DJId == DJId && p.Estado == "CONCLUIDO")
                 .GroupBy(m => m.MusicaInPlayList.Musica.Artista)
                 .OrderBy(g => g.Count())
                 .Select(m => m.FirstOrDefault().MusicaInPlayList.Musica)
@@ -92,7 +92,7 @@ namespace PayAndPlay.Models
             string NomeUtilizadorMaisPedidos = "";
             // Listar o utilizador que mais pedidos fez
             Utilizador UtilizadorMaisPedidos = _context.Tpedidos
-                .Where(p => p.DJId == DjId)
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
                 .GroupBy(u => u.UtilizadorId)
                 .OrderBy(g => g.Count())
                 .Select(u => u.FirstOrDefault().Utilizador)
@@ -112,7 +112,7 @@ namespace PayAndPlay.Models
             string NomeUtilizadorMenosPedidos = "";
             // Listar o utilizador que menos pedidos fez
             Utilizador UtilizadorMenosPedidos = _context.Tpedidos
-                .Where(p => p.DJId == DjId)
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
                 .GroupBy(u => u.UtilizadorId)
                 .OrderBy(g => g.Count())
                 .Select(u => u.FirstOrDefault().Utilizador)
@@ -132,7 +132,7 @@ namespace PayAndPlay.Models
             string NomeUtilizadorMaisGastos = "";
             // Listar o utilizador que mais gastou
             Utilizador UtilizadorMaisGastos = _context.Tpedidos
-                .Where(p => p.DJId == DjId)
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
                 .GroupBy(u => u.UtilizadorId)
                 .OrderBy(g => g.Sum(p => p.Custo_Pedido))
                 .Select(u => u.FirstOrDefault().Utilizador)
@@ -152,7 +152,7 @@ namespace PayAndPlay.Models
             string NomeUtilizadorMenosGastos = "";
             // Listar o utilizador que menos gastou
             Utilizador UtilizadorMenosGastos = _context.Tpedidos
-                .Where(p => p.DJId == DjId)
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
                 .GroupBy(u => u.UtilizadorId)
                 .OrderByDescending(g => g.Sum(p => p.Custo_Pedido))
                 .Select(u => u.FirstOrDefault().Utilizador)
@@ -174,7 +174,7 @@ namespace PayAndPlay.Models
         {
             // Listar os gastos de um utilizador num mês por DJ
             var GastosMes = _context.Tpedidos
-                .Where(p => p.UtilizadorId == UtilizadorId && (data == null || p.Data.Month == data))
+                .Where(p => p.UtilizadorId == UtilizadorId && (data == null || p.Data.Month == data) && p.Estado == "CONCLUIDO")
                 .GroupBy(p => p.DJId)
                 .Select(g => new
                 {
@@ -190,7 +190,7 @@ namespace PayAndPlay.Models
         {
             // Listar os gastos de um utilizador num período por DJ
             var GastosPeriodo = _context.Tpedidos
-                .Where(p => p.UtilizadorId == UtilizadorId && p.Data.Month >= dataInicio && p.Data.Month <= dataFim)
+                .Where(p => p.UtilizadorId == UtilizadorId && (p.Data.Month >= dataInicio && p.Data.Month <= dataFim) && p.Estado == "CONCLUIDO")
                 .GroupBy(p => p.DJId)
                 .Select(g => new
                 {

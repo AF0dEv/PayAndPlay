@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pedidousercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\views\\pedidouser\\musicasdjpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\pedidouser\\musicasdjpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\controllers\\pedidodjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pedidodjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\views\\pedidouser\\playlistdjpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\pedidouser\\playlistdjpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\views\\pedidodj\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\pedidodj\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,37 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlayListDjPedidos.cshtml",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\PlayListDjPedidos.cshtml",
-              "RelativeDocumentMoniker": "Views\\PedidoUser\\PlayListDjPedidos.cshtml",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\PlayListDjPedidos.cshtml",
-              "RelativeToolTip": "Views\\PedidoUser\\PlayListDjPedidos.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-11T15:33:17.932Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MusicasDjPedidos.cshtml",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\MusicasDjPedidos.cshtml",
-              "RelativeDocumentMoniker": "Views\\PedidoUser\\MusicasDjPedidos.cshtml",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\MusicasDjPedidos.cshtml",
-              "RelativeToolTip": "Views\\PedidoUser\\MusicasDjPedidos.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAwCAAAABfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-11T15:24:15.653Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -66,9 +40,35 @@
               "RelativeDocumentMoniker": "Controllers\\PedidoUserController.cs",
               "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoUserController.cs",
               "RelativeToolTip": "Controllers\\PedidoUserController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAADwvxoAAAAuAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAADwAAAChAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T13:54:03.827Z",
+              "WhenOpened": "2024-04-11T21:55:13.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PedidoDjController.cs",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoDjController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PedidoDjController.cs",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoDjController.cs",
+              "RelativeToolTip": "Controllers\\PedidoDjController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAYwCAAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T21:17:05.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoDj\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\PedidoDj\\Index.cshtml",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoDj\\Index.cshtml",
+              "RelativeToolTip": "Views\\PedidoDj\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADgAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-11T21:22:10.457Z",
               "EditorCaption": ""
             },
             {
@@ -79,9 +79,10 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAEgAAAAlAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAF4AAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-11T08:56:11.597Z"
+              "WhenOpened": "2024-04-11T08:56:11.597Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -34,7 +34,7 @@ namespace PayAndPlay.Controllers
             }
 
             var musica = await _context.Tmusicas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (musica == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Artista,Duracao,Custo")] Musica musica)
         {
-            if (id != musica.Id)
+            if (id != musica.ID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace PayAndPlay.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MusicaExists(musica.Id))
+                    if (!MusicaExists(musica.ID))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace PayAndPlay.Controllers
             }
 
             var musica = await _context.Tmusicas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (musica == null)
             {
                 return NotFound();
@@ -151,7 +151,7 @@ namespace PayAndPlay.Controllers
 
         private bool MusicaExists(int id)
         {
-            return _context.Tmusicas.Any(e => e.Id == id);
+            return _context.Tmusicas.Any(e => e.ID == id);
         }
     }
 }

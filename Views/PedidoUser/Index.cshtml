@@ -1,7 +1,8 @@
-﻿@{
+﻿@model IEnumerable<PayAndPlay.Models.DJ>
+@{
     ViewData["Title"] = "Index";
 }
-<form id="FormCbxDj">
+<form>
 @Html.DropDownList("cbxDj", (SelectList)ViewBag.DJs, "Selecione Dj")
 <button type="submit" formmethod="post">BUSCAR</button>
 </form>

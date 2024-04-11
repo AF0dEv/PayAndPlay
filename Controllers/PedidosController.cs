@@ -74,7 +74,7 @@ namespace PayAndPlay.Controllers
             ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
             return View(pedido);
         }
-
+        
         // GET: Pedidos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
