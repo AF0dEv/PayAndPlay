@@ -43,17 +43,19 @@
                 @Html.DisplayFor(modelItem => item.Custo)
             </td>
             <td>
-                @{// fiquei aqui, fazer com que apenas apareca os botoes para o admin
-                    if ()
+                    @* // fiquei aqui, fazer com que apenas apareca os botoes para o admin *@
+                    @{
+                        if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("ADMIN") == "true" && Context.Session.GetString("PERFIL") == "3")
                         {
-                            
+                           <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a> 
+                           <a asp-action="Details" asp-route-id="@item.Id">Details |</a> 
+                           <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                           
                         }
-                }
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
             </td>
         </tr>
+            
 }
     </tbody>
 </table>

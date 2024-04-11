@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cX0scsv6vonyYvjVxowg3B40/cIO4sUM/gUKG5Wul9o=",
+  "Hash": "yfo5D8npxEASVwhGptQQf6eCTygXA8FYuEvWdkhOd9A=",
   "Source": "PayAndPlay",
   "BasePath": "_content/PayAndPlay",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\GeneratedQRCode\\qrcode.png",
+      "SourceId": "PayAndPlay",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\",
+      "BasePath": "_content/PayAndPlay",
+      "RelativePath": "GeneratedQRCode/qrcode.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\GeneratedQRCode\\qrcode.png"
     },
     {
       "Identity": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\js\\site.js",

@@ -26,6 +26,46 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\afons\source\repos\AF0dEv\PayAndPlay\PayAndPlay
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -126,6 +166,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/MusicasDjPedidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxNdXNpY2FzRGpQZWRpZG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/PlayListDjPedidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxQbGF5TGlzdERqUGVkaWRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PerfilDJ/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsREpcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -172,6 +224,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/QRCode/CreateQRCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJDb2RlXENyZWF0ZVFSQ29kZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Registo/Index.cshtml]

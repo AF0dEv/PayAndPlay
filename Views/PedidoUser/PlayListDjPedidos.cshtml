@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PayAndPlay.Models.PlayList>
+
+@{
+    ViewData["Title"] = "PlayListDjPedidos";
+}
+<h1>Selecione PlayList</h1>
+@if (ViewBag.PLAYLISTSDJ != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    PlayList
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PlayList item in ViewBag.PLAYLISTSDJ)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        <button type="submit">Selecionar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Este DJ não tem PlayLists Disponiveis</p>
+}
+

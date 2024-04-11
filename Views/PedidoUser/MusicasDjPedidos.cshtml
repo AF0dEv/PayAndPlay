@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PayAndPlay.Models.MusicaInPlayList>
+
+@{
+    ViewData["Title"] = "Musicas DJ";
+}
+<h1>Selecione Música</h1>
+    @if (ViewBag.MUSICASPLAYLISTDJ != null)
+{
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    PlayList
+                </th>
+                <th>
+                    Música
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MusicaInPlayList item in ViewBag.MUSICASPLAYLISTDJ)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlayList.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Musica.Nome)
+                    </td>
+                    <td>
+                        <a asp-action="MusicasDjPedidos" asp-route-id="@item.ID">Selecionar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Este DJ não tem PlayLists Disponiveis</p>
+}

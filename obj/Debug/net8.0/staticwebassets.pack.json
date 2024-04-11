@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\PayAndPlay.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\GeneratedQRCode\\qrcode.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\qrcode.png"
+    },
+    {
       "Id": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

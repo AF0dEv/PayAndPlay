@@ -47,6 +47,7 @@ namespace PayAndPlay.Models
 
         public string ListarMusicasMaisPedidas(int DJId)
         {
+            string NomeMusicasMaisPedidas = "";
             // Listar as músicas mais pedidas de um DJ 
             Musica MusicasMaisPedidas = _context.Tpedidos
                 .Where(p => p.DJId == DJId)
@@ -54,12 +55,20 @@ namespace PayAndPlay.Models
                 .OrderBy(g => g.Count())
                 .Select(m => m.FirstOrDefault().MusicaInPlayList.Musica)
                 .FirstOrDefault();
-           string NomeMusicasMaisPedidas = MusicasMaisPedidas.Nome.ToString();
+            if (MusicasMaisPedidas != null)
+            {
+                NomeMusicasMaisPedidas = MusicasMaisPedidas.Nome.ToString();
+            }
+            else
+            {
+                NomeMusicasMaisPedidas = "Não existem músicas pedidas";
+            }
 
             return NomeMusicasMaisPedidas;
         }
         public string ListarMusicasMenosPedidas(int DJId)
         {
+            string NomeMusicasMenosPedidas = "";
             // Listar as músicas menos pedidas de um DJ 
             Musica MusicasMenosPedidas = _context.Tpedidos
                 .Where(p => p.DJId == DJId)
@@ -67,12 +76,20 @@ namespace PayAndPlay.Models
                 .OrderBy(g => g.Count())
                 .Select(m => m.FirstOrDefault().MusicaInPlayList.Musica)
                 .LastOrDefault();
-            string NomeMusicasMenosPedidas = MusicasMenosPedidas.Nome.ToString();
+            if (MusicasMenosPedidas != null)
+            {
+                NomeMusicasMenosPedidas = MusicasMenosPedidas.Nome.ToString();
+            }
+            else
+            {
+                NomeMusicasMenosPedidas = "Não existem músicas pedidas";
+            }
 
             return NomeMusicasMenosPedidas;
         }
         public string ListarUtilizadorMaisPedidos(int DjId)
         {
+            string NomeUtilizadorMaisPedidos = "";
             // Listar o utilizador que mais pedidos fez
             Utilizador UtilizadorMaisPedidos = _context.Tpedidos
                 .Where(p => p.DJId == DjId)
@@ -80,11 +97,19 @@ namespace PayAndPlay.Models
                 .OrderBy(g => g.Count())
                 .Select(u => u.FirstOrDefault().Utilizador)
                 .FirstOrDefault();
-            string NomeUtilizadorMaisPedidos = UtilizadorMaisPedidos.UserName.ToString();
+            if (UtilizadorMaisPedidos != null)
+            {
+                NomeUtilizadorMaisPedidos = UtilizadorMaisPedidos.UserName.ToString();
+            }
+            else
+            {
+                NomeUtilizadorMaisPedidos = "Não existem Pedidos";
+            }
             return NomeUtilizadorMaisPedidos;
         }
         public string ListarUtilizadorMenosPedidos(int DjId)
         {
+            string NomeUtilizadorMenosPedidos = "";
             // Listar o utilizador que menos pedidos fez
             Utilizador UtilizadorMenosPedidos = _context.Tpedidos
                 .Where(p => p.DJId == DjId)
@@ -92,12 +117,19 @@ namespace PayAndPlay.Models
                 .OrderBy(g => g.Count())
                 .Select(u => u.FirstOrDefault().Utilizador)
                 .LastOrDefault();
-            string NomeUtilizadorMenosPedidos = UtilizadorMenosPedidos.UserName.ToString();
-
+            if (UtilizadorMenosPedidos != null)
+            {
+                NomeUtilizadorMenosPedidos = UtilizadorMenosPedidos.UserName.ToString();
+            }
+            else
+            {
+                NomeUtilizadorMenosPedidos = "Não existem Pedidos";
+            }
             return NomeUtilizadorMenosPedidos;
         }
         public string ListarUtilizadorMaisGastos(int DjId)
         {
+            string NomeUtilizadorMaisGastos = "";
             // Listar o utilizador que mais gastou
             Utilizador UtilizadorMaisGastos = _context.Tpedidos
                 .Where(p => p.DJId == DjId)
@@ -105,11 +137,19 @@ namespace PayAndPlay.Models
                 .OrderBy(g => g.Sum(p => p.Custo_Pedido))
                 .Select(u => u.FirstOrDefault().Utilizador)
                 .FirstOrDefault();
-            string NomeUtilizadorMaisGastos = UtilizadorMaisGastos.UserName.ToString();
+            if (UtilizadorMaisGastos != null)
+            {
+                NomeUtilizadorMaisGastos = UtilizadorMaisGastos.UserName.ToString();
+            }
+            else
+            {
+                NomeUtilizadorMaisGastos = "Não existem Pedidos";
+            }
             return NomeUtilizadorMaisGastos;
         }
         public string ListarUtilizadorMenosGastos(int DjId)
         {
+            string NomeUtilizadorMenosGastos = "";
             // Listar o utilizador que menos gastou
             Utilizador UtilizadorMenosGastos = _context.Tpedidos
                 .Where(p => p.DJId == DjId)
@@ -117,8 +157,14 @@ namespace PayAndPlay.Models
                 .OrderByDescending(g => g.Sum(p => p.Custo_Pedido))
                 .Select(u => u.FirstOrDefault().Utilizador)
                 .FirstOrDefault();
-
-            string NomeUtilizadorMenosGastos = UtilizadorMenosGastos.UserName.ToString();
+            if (UtilizadorMenosGastos != null)
+            {
+                NomeUtilizadorMenosGastos = UtilizadorMenosGastos.UserName.ToString();
+            }
+            else
+            {
+                NomeUtilizadorMenosGastos = "Não existem Pedidos";
+            }
             return NomeUtilizadorMenosGastos;
         }
 

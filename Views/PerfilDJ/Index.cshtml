@@ -1,6 +1,7 @@
 ﻿
 @using System.Globalization
-<span><h1>Perfil de @Context.Session.GetString("UTILIZADOR")</h1> Saldo: @ViewBag.SALDO</span>
+<h1>Perfil de @Context.Session.GetString("UTILIZADOR")</h1> @*criar botao de gerar qrcode*@
+<span>Saldo: @ViewBag.SALDO                     <button type="submit" id="btnGerarQR" name="btnGerarQR">Gerar QrCode</button></span>
 <div>
     <h2>LISTAGENS</h2>
     <form method="post" action="@Url.Action("Index", "PerfilDJ")">
