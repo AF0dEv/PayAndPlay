@@ -2,49 +2,54 @@
 using Microsoft.AspNetCore.Mvc;
 using IronBarCode;
 using System.Drawing;
+using PayAndPlay.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PayAndPlay.Controllers
 {
     public class QRCodeController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
-
-        public QRCodeController(IWebHostEnvironment hostingEnvironment)
+        private readonly ApplicationDbContext _context;
+        public QRCodeController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context)
         {
+            _context = context;
             _hostingEnvironment = hostingEnvironment;
         }
-
         public IActionResult CreateQRCode()
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CreateQRCode(QRCodeModel GenerateQRCode) 
-        {
+            //ViewBag.DJs = new SelectList(_context.Tdjs.ToList(), "ID", "UserName");
             try
             {
-                GeneratedBarcode barcode = QRCodeWriter.CreateQrCode(GenerateQRCode.QRCodeText, 200);
+                string redirectUrl = "http://localhost:5281/PedidoUser/PlayListDjPedidos/" + HttpContext.Session.GetString("ID"); // Replace with your desired URL
+
+                GeneratedBarcode barcode = QRCodeWriter.CreateQrCode(redirectUrl, 500);
                 barcode.AddBarcodeValueTextBelowBarcode();
-                barcode.SetMargins(10);
+                barcode.AddAnnotationTextAboveBarcode("SCANEIA ESTE QR CODE PARA OUVIRES AS TUAS MÚSICAS");
+                barcode.AddAnnotationTextBelowBarcode("DJ: " + HttpContext.Session.GetString("UTILIZADOR"));
+                barcode.SetMargins(30);
                 barcode.ChangeBarCodeColor(Color.Black);
+
                 string path = Path.Combine(_hostingEnvironment.WebRootPath, "GeneratedQRCode");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "GeneratedQRCode/qrcode.png");
-                barcode.SaveAsPng(filePath);
-                string fileName = Path.GetFileName(filePath);
-                string imageUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}" + "/GeneratedQRCode/" + fileName;
-                ViewBag.QrCodeUrl = imageUrl;
 
+                string imageName = HttpContext.Session.GetString("UTILIZADOR") + ".png"; // Provide a fixed filename for the QR code image
+                string filePath = Path.Combine(_hostingEnvironment.WebRootPath, "GeneratedQRCode/" + imageName);
+                barcode.SaveAsPng(filePath);
+
+                string imageUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}/GeneratedQRCode/{imageName}";
+                ViewBag.QrCodeUrl = imageUrl;
             }
             catch (Exception)
             {
-
                 throw;
             }
+
             return View();
         }
+
     }
 }

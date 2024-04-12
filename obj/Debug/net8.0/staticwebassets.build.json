@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yfo5D8npxEASVwhGptQQf6eCTygXA8FYuEvWdkhOd9A=",
+  "Hash": "/ohAJjJyDzGif49ksPSTygV17sNGkzMxlYcc2sgIaSg=",
   "Source": "PayAndPlay",
   "BasePath": "_content/PayAndPlay",
   "Mode": "Default",
@@ -93,12 +93,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\GeneratedQRCode\\qrcode.png",
+      "Identity": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\GeneratedQRCode\\Metro Boomin.png",
       "SourceId": "PayAndPlay",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\",
       "BasePath": "_content/PayAndPlay",
-      "RelativePath": "GeneratedQRCode/qrcode.png",
+      "RelativePath": "GeneratedQRCode/Metro Boomin.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\GeneratedQRCode\\qrcode.png"
+      "OriginalItemSpec": "wwwroot\\GeneratedQRCode\\Metro Boomin.png"
     },
     {
       "Identity": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\js\\site.js",

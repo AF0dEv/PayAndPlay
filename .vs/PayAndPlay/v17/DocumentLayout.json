@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\controllers\\pedidodjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pedidodjcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\views\\pedidouser\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\pedidouser\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\controllers\\pedidousercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pedidousercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PedidoDjController.cs",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoDjController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PedidoDjController.cs",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoDjController.cs",
-              "RelativeToolTip": "Controllers\\PedidoDjController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAwAAAA",
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-12T17:31:36.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\PedidoUser\\Index.cshtml",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\Index.cshtml",
+              "RelativeToolTip": "Views\\PedidoUser\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-12T17:23:56.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PedidoUserController.cs",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoUserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PedidoUserController.cs",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoUserController.cs",
+              "RelativeToolTip": "Controllers\\PedidoUserController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T14:51:34.525Z",
+              "WhenOpened": "2024-04-12T17:21:52.44Z",
               "EditorCaption": ""
             }
           ]

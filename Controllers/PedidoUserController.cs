@@ -13,17 +13,9 @@ namespace PayAndPlay.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? cbxDj)
+        public IActionResult Index()
         {
-            if (cbxDj == null)
-            {
-                ViewBag.DJs = new SelectList(_context.Tdjs, "ID", "UserName");
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("PlayListDjPedidos", "PedidoUser", new { id = cbxDj });
-            }
+            return View();
         }
         public IActionResult PlayListDjPedidos(int id)
         {

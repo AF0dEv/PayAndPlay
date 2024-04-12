@@ -1,8 +1,24 @@
-﻿@model IEnumerable<PayAndPlay.Models.DJ>
+﻿@using System.Net.NetworkInformation
+@model IEnumerable<PayAndPlay.Models.DJ>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "QRCODE SCANNER";
 }
-<form>
-@Html.DropDownList("cbxDj", (SelectList)ViewBag.DJs, "Selecione Dj")
-<button type="submit" formmethod="post">BUSCAR</button>
-</form>
+
+<div>
+    <video id="cameraFeed" autoplay></video>
+</div>
+
+@section Scripts {
+    <script>
+        // Access the user's camera and display the video stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                var videoElement = document.getElementById('cameraFeed');
+                videoElement.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.error('Error accessing camera:', error);
+            });
+    </script>
+    <script src="~/js/site.js"></script>
+    }
