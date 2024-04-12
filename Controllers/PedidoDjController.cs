@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PayAndPlay.Data;
+using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
@@ -15,9 +17,42 @@ namespace PayAndPlay.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.PEDIDOSPENDENTES= _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.DJ).Where(p => p.Estado == "Pendente");
-            ViewBag.PEDIDOSCONCLUIDOS = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.DJ).Where(p => p.Estado == "Concluido");
-            ViewBag.PEDIDOSRECUSADOS = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.DJ).Where(p => p.Estado == "Recusado");
+            var pedidosPagos = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.Musica).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.DJ).Where(p => p.Estado == "PAGO");
+            if (!pedidosPagos.IsNullOrEmpty())
+            {
+                ViewBag.PEDIDOSPAGOS = pedidosPagos;
+            }
+            else
+            {
+                ViewBag.PEDIDOSPAGOS = null;
+            }
+            var pedidosPendentes = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.Musica).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.DJ).Where(p => p.Estado == "PENDENTE"); 
+            if (!pedidosPendentes.IsNullOrEmpty())
+            {
+                ViewBag.PEDIDOSPENDENTES = pedidosPendentes;
+            }
+            else
+            {
+                ViewBag.PEDIDOSPENDENTES = null;
+            }
+            var pedidosConcluidos = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.Musica).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.DJ).Where(p => p.Estado == "CONCLUIDO");
+            if (!pedidosConcluidos.IsNullOrEmpty())
+            {
+                ViewBag.PEDIDOSCONCLUIDOS = pedidosConcluidos;
+            }
+            else
+            {
+                ViewBag.PEDIDOSCONCLUIDOS = null;
+            }
+            var pedidosRecusados = _context.Tpedidos.Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.Musica).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.DJ).Where(p => p.Estado == "RECUSADO");
+            if (!pedidosRecusados.IsNullOrEmpty())
+            {
+                ViewBag.PEDIDOSRECUSADOS = pedidosRecusados;
+            }
+            else
+            {
+                ViewBag.PEDIDOSRECUSADOS = null;
+            }
             return View();
         }   
         public IActionResult ConcluirPedido(int id)

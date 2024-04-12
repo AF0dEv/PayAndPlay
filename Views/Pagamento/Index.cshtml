@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PayAndPlay.Models.Pedido>
+<h1>Pedido</h1>
+@{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Custo_Pedido
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Utilizador
+                </th>
+                <th>
+                    DJ
+                </th>
+                <th>
+                    PlayList
+                </th>
+                <th>
+                    Musica
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>
+                        @p.Data
+                    </td>
+                    <td>
+                        @p.Custo_Pedido
+                    </td>
+                    <td>
+                        @p.Estado
+                    </td>
+                    <td>
+                        @p.Utilizador.UserName
+                    </td>
+                    <td>
+                        @p.DJ.UserName
+                    </td>
+                    <td>
+                        @p.MusicaInPlayList.PlayList.Nome
+                    </td>
+                    <td>
+                        @p.MusicaInPlayList.Musica.Nome
+                    </td>
+                    <td>
+                    <form>
+                        <button class="btn btn-success" asp-action="PagarPedido" asp-route-id="@p.ID">Pagar</button> |
+                        <button class="btn btn-danger" asp-action="RecusarPedido" asp-route-id="@p.ID">Cancelar</button>
+                    </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   }

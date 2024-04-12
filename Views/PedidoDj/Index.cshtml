@@ -1,11 +1,80 @@
 ﻿@model IEnumerable<PayAndPlay.Models.Pedido>
 <h1>PEDIDOS</h1>
 <hr />
-<br />
-<h2>Pedidos Pendentes</h2>
+
 @{
-    if (ViewBag.PEDIDOSPENDENTES != null)
+    if (ViewBag.PEDIDOSPAGOS != null){
+
+        <br />
+        <h2>Pedidos Pagos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Custo_Pedido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Utilizador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DJ)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusicaInPlayList.PlayList.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusicaInPlayList.Musica.Nome)
+                    </th>
+                    @*adicionar aqui o nome da musica e playlist em vez de musica in playlist*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Pedido p in ViewBag.PEDIDOSPAGOS)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Custo_Pedido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Utilizador.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.DJ.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.MusicaInPlayList.PlayList.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.MusicaInPlayList.Musica.Nome)
+                        </td>
+                        <td>
+                            <form>
+                                <button asp-action="ConcluirPedido" asp-route-id="@p.ID">ACEITAR</button> |
+                                <button asp-action="RecusarPedido" asp-route-id="@p.ID">RECUSAR</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        }if (ViewBag.PEDIDOSPENDENTES != null)
     {
+        <br />
+        <h2>Pedidos Pendentes</h2>
     <table class="table">
     <thead>
         <tr>
@@ -24,10 +93,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.DJ)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MusicaInPlayList)
-            </th>
-            <th></th>
+             <th>
+                 @Html.DisplayNameFor(model => model.MusicaInPlayList.PlayList.Nome)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.MusicaInPlayList.Musica.Nome)
+             </th>
         </tr>
     </thead>
     <tbody>
@@ -49,25 +120,20 @@
                 @Html.DisplayFor(modelItem => p.DJ.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+                @Html.DisplayFor(modelItem => p.MusicaInPlayList.PlayList.Nome)
             </td>
             <td>
-            <form>
-                 <button asp-action="ConcluirPedido" asp-route-id="@p.ID">ACEITAR</button> |
-                 <button asp-action="RecusarPedido" asp-route-id="@p.ID">RECUSAR</button>
-            </form>
+                @Html.DisplayFor(modelItem => p.MusicaInPlayList.Musica.Nome)
             </td>
         </tr>
     }
     </tbody>
 </table>
-<hr />
-<br />
-<h2>Pedidos Concluidos</h2>
-<hr />
-    }
-    if (ViewBag.PEDIDOSCONCLUIDOS != null)
+
+    }if (ViewBag.PEDIDOSCONCLUIDOS != null)
     {
+        <br />
+        <h2>Pedidos Concluidos</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -87,7 +153,10 @@
                         @Html.DisplayNameFor(model => model.DJ)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.MusicaInPlayList)
+                        @Html.DisplayNameFor(model => model.MusicaInPlayList.PlayList.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusicaInPlayList.Musica.Nome)
                     </th>
                 </tr>
             </thead>
@@ -111,20 +180,21 @@
                             @Html.DisplayFor(modelItem => p.DJ.UserName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+                            @Html.DisplayFor(modelItem => p.MusicaInPlayList.PlayList.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.MusicaInPlayList.Musica.Nome)
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     }
-    <hr />
-    <br />
-    <h2>Pedidos Recusados</h2>
-    <hr />
 
     if (ViewBag.PEDIDOSRECUSADOS != null)
     {
+        <br />
+        <h2>Pedidos Recusados</h2>
 <table class="table">
     <thead>
         <tr>
@@ -144,7 +214,10 @@
                 @Html.DisplayNameFor(model => model.DJ)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MusicaInPlayList)
+                @Html.DisplayNameFor(model => model.MusicaInPlayList.PlayList.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MusicaInPlayList.Musica.Nome)
             </th>
         </tr>
     </thead>
@@ -168,7 +241,10 @@
                     @Html.DisplayFor(modelItem => p.DJ.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => p.MusicaInPlayListId)
+                    @Html.DisplayFor(modelItem => p.MusicaInPlayList.PlayList.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.MusicaInPlayList.Musica.Nome)
                 </td>
             </tr>
         }

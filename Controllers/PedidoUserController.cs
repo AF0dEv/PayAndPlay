@@ -7,12 +7,10 @@ namespace PayAndPlay.Controllers
 {
     public class PedidoUserController : Controller
     {
-        private Pedido pedido;
         private readonly ApplicationDbContext _context;
 
         public PedidoUserController(ApplicationDbContext context)
         {
-            pedido = new Pedido();
             _context = context;
         }
         public IActionResult Index(int? cbxDj)
@@ -24,8 +22,6 @@ namespace PayAndPlay.Controllers
             }
             else
             {
-                pedido.DJId = cbxDj ?? 0;
-                pedido.UtilizadorId = int.Parse(HttpContext.Session.GetString("ID"));
                 return RedirectToAction("PlayListDjPedidos", "PedidoUser", new { id = cbxDj });
             }
         }
@@ -53,11 +49,20 @@ namespace PayAndPlay.Controllers
             PlayList playlist= _context.TplayLists.Where(p => p.MusicasInPlayLists.Any(mp => mp.MusicaId == id)).FirstOrDefault();
             Musica musica = _context.Tmusicas.Find(id);
             MusicaInPlayList mip = _context.TmusicaInPlayLists.Where(p => p.MusicaId == musica.ID && p.PlayListId == playlist.ID).FirstOrDefault();
+            Pedido pedido = new Pedido();
             pedido.MusicaInPlayListId = mip.ID;
+            pedido.DJId = playlist.DJId;
+            pedido.UtilizadorId = int.Parse(HttpContext.Session.GetString("ID"));
             pedido.Estado = "PENDENTE";
-            pedido.Data = DateOnly.Parse(DateTime.Now.ToString());
+            pedido.Data = DateOnly.FromDateTime(DateTime.Now);
             pedido.Custo_Pedido = musica.Custo;
-            return RedirectToAction("Index", "Pagamento", new { p = pedido });
+            pedido.Utilizador = _context.Tutilizadores.Find(pedido.UtilizadorId);
+            pedido.DJ = _context.Tdjs.Find(pedido.DJId);
+            pedido.MusicaInPlayList = _context.TmusicaInPlayLists.Find(pedido.MusicaInPlayListId);
+            _context.Tpedidos.Add(pedido);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Pagamento", new { id = pedido.ID });
+
             // Fiquei aqui, falta fazer a parte do pagamento, e depois de pagar, o pedido passa a concluido, testar este ultimo metodo antes de criar o pagamento
         }
     }
