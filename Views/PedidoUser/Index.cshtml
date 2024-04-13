@@ -9,16 +9,34 @@
 </div>
 
 @section Scripts {
+    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
     <script>
-        // Access the user's camera and display the video stream
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
             .then(function (stream) {
-                var videoElement = document.getElementById('cameraFeed');
-                videoElement.srcObject = stream;
-            })
-            .catch(function (error) {
-                console.error('Error accessing camera:', error);
+                var video = document.getElementById('cameraFeed');
+                video.srcObject = stream;
+                video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+                video.play();
+                requestAnimationFrame(tick);
             });
+
+        function tick() {
+            var video = document.getElementById('cameraFeed');
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                var canvas = document.createElement("canvas");
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var code = jsQR(imageData.data, imageData.width, imageData.height);
+                if (code) {
+                    console.log("Found QR code", code);
+                    window.location.href = code.data; // Redirect to the URL encoded in the QR code
+                }
+            }
+            requestAnimationFrame(tick);
+        }
     </script>
-    <script src="~/js/site.js"></script>
-    }
+}
