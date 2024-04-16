@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
+using System.Linq;
 
 namespace PayAndPlay.Controllers
 {
@@ -45,7 +46,7 @@ namespace PayAndPlay.Controllers
         // GET: MusicasInPlayLists/Create
         public IActionResult Create()
         {
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome");
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome");
             ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome");
             return View();
         }
@@ -63,7 +64,7 @@ namespace PayAndPlay.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
             ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }
@@ -81,8 +82,8 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["Musica"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
+            ViewData["PlayList"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }
 
@@ -118,7 +119,7 @@ namespace PayAndPlay.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
             ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }

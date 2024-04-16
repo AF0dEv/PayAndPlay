@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\controllers\\pagamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pagamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|c:\\users\\afons\\source\\repos\\af0dev\\payandplay\\payandplay\\controllers\\djmusicasinplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\djmusicasinplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\views\\pedidouser\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:views\\pedidouser\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\controllers\\pedidousercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\pedidousercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\controllers\\musicasinplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC78A91-A544-4C1F-9F03-BE471924E4FB}|PayAndPlay.csproj|solutionrelative:controllers\\musicasinplaylistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,39 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PagamentoController.cs",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PagamentoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PagamentoController.cs",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PagamentoController.cs",
-              "RelativeToolTip": "Controllers\\PagamentoController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAxAAAA",
+              "Title": "DjMusicasInPlayListsController.cs",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\DjMusicasInPlayListsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DjMusicasInPlayListsController.cs",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\DjMusicasInPlayListsController.cs",
+              "RelativeToolTip": "Controllers\\DjMusicasInPlayListsController.cs",
+              "ViewState": "AQIAAHkAAAAAAAAAAAAmwIUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T12:52:15.32Z",
+              "WhenOpened": "2024-04-16T21:55:02.166Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\PedidoUser\\Index.cshtml",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Views\\PedidoUser\\Index.cshtml",
-              "RelativeToolTip": "Views\\PedidoUser\\Index.cshtml",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwCoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-12T17:23:56.239Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PedidoUserController.cs",
-              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoUserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PedidoUserController.cs",
-              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\PedidoUserController.cs",
-              "RelativeToolTip": "Controllers\\PedidoUserController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBAAAAAJAAAA",
+              "Title": "MusicasInPlayListsController.cs",
+              "DocumentMoniker": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\MusicasInPlayListsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MusicasInPlayListsController.cs",
+              "ToolTip": "C:\\Users\\afons\\source\\repos\\AF0dEv\\PayAndPlay\\PayAndPlay\\Controllers\\MusicasInPlayListsController.cs",
+              "RelativeToolTip": "Controllers\\MusicasInPlayListsController.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAmwKkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T17:21:52.44Z"
+              "WhenOpened": "2024-04-16T21:53:57.202Z"
             }
           ]
         }

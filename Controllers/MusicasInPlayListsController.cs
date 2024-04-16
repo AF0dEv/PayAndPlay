@@ -49,8 +49,8 @@ namespace PayAndPlay.Controllers
         // GET: MusicasInPlayLists/Create
         public IActionResult Create()
         {
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome");
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome");
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID");
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace PayAndPlay.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }
 
@@ -85,8 +85,8 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }
 
@@ -122,8 +122,8 @@ namespace PayAndPlay.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "Id", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
             return View(musicaInPlayList);
         }
 

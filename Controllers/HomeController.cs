@@ -15,8 +15,23 @@ namespace PayAndPlay.Controllers
 
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("CONTROLADOR", "Home");
-            return View();
+            if (HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
+            {
+                HttpContext.Session.SetString("CONTROLADOR", "Home");
+                return View();
+            }
+            else if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
+            {
+                return RedirectToAction("Index", "PerfilUser");
+            }
+            else if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "2" && HttpContext.Session.GetString("ADMIN") == "false")
+            {
+                return RedirectToAction("Index", "PerfilDJ");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()

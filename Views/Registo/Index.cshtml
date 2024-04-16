@@ -1,10 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Tipo de Registo";
-}
+﻿<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-<h1>Escolha o Tipo de Registo</h1>
-<form>
-<button class="btn btn-primary" asp-controller="Registo" asp-action="RegistoUtilizador" type="submit">Utilizador</button>
-    <button class="btn btn-secondary" asp-controller="Registo" asp-action="RegistoDJ" type="submit">DJ</button>
-</form>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Tipo de Registo</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic&amp;display=swap">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/baguetteBox.min.css">
+</head>
 
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
+    <header class="text-center text-white d-flex masthead" style="background: url('/Pictures/bgHome.jpg'); bottom / cover no-repeat;">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong>eu sou...</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row justify-content-start" style="padding-left: 0px;margin-right: 0px;width: auto;margin-left: 4px;">
+                <div class="col"></div>
+                <div class="col-12 col-sm-6 col-lg-4 offset-1 offset-xxl-9" style="width: 300px;margin-right: 0px;padding-left: 0px;margin-left: 0px;">
+                    <a class="portfolio-box" asp-controller="Registo" asp-action="RegistoDJ" style="width: 300px;">
+                        <img class="img-fluid" src="/Pictures/bgDJRegLog.jpg" style="height: 300px;">
+                        <div class="portfolio-box-caption" style="width: 300px;height: 300px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>DJ</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col" style="width: 300px;"></div>
+                <div class="col-sm-6 col-lg-4 col-xxl-4 offset-xxl-11" style="width: 300px;height: 300px;padding-right: 0px;padding-left: 0px;margin-left: 100px;">
+                    <a class="portfolio-box" asp-controller="Registo" asp-action="RegistoUtilizador" style="width: 300px;">
+                        <img class="img-fluid" src="/Pictures/bgUserRegLog.jpg" width="300" height="300" style="width: 300px;">
+                        <div class="portfolio-box-caption" style="width: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>UTILIZADOR</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </header>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/baguetteBox.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/creative.js"></script>
+</body>
+
+</html>

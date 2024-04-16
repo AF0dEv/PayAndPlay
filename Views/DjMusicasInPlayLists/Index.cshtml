@@ -1,14 +1,30 @@
 ﻿@model IEnumerable<PayAndPlay.Models.MusicaInPlayList>
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-@{
-    ViewData["Title"] = "Index";
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">>
+</head>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<body style="background: url('/Pictures/bgHome.jpg'); no-repeat;background-size: cover;">
+    <div class="container" style="padding-top: 70px;">
+        <div class="row">
+            <div class="col-md-12 offset-xl-0">
+                <div>
+                    <p style="color: var(--bs-secondary-bg);font-weight: bold;font-size: 40px;text-align: center;">MUSICAS IN PLAYLISTS</p>
+                    <p>
+                        <a asp-action="Create">Create New</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div class="table-responsive">
 <table class="table">
     <thead>
         <tr>
@@ -40,3 +56,13 @@
         }
     </tbody>
 </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

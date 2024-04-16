@@ -1,8 +1,184 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-pt">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Pay&Play</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic&amp;display=swap">
+    <link rel="stylesheet" href="lib/bootstrap/dist/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/aos.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/animate.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/baguetteBox.min.css">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
+    <header class="text-center text-white d-flex masthead" style="background: url('/Pictures/bgHome.jpg'); bottom / cover no-repeat;">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto" style="background: rgba(0,0,0,0.15);">
+                    <h1 class="text-uppercase" style="background: rgba(0,0,0,0);"><strong>Escolha, pague e curta com o nosso dj</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <p class="text-faded mb-5" style="color: rgb(255,255,255);background: rgba(0,0,0,0.36);">Desbloqueie o ritmo da sua noite com o Pay and Play. Escolha suas faixas favoritas de forma fácil, acerte o compasso com um pagamento simples e entregue-se ao groove enquanto nosso DJ transforma sua música em realidade. Não é apenas uma música - é o seu momento na pista de dança. Mergulhe na fusão definitiva de escolha e conveniência, só com o Pay and Play.</p>
+                <a class="btn btn-primary btn-xl" role="button" data-bss-hover-animate="pulse" asp-controller="Login" asp-action="LoginDJ">Find Out More</a>
+            </div>
+        </div>
+    </header>
+    <section id="DJPROMO" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col offset-lg-8 text-center mx-auto" data-aos="zoom-in">
+                    <h2 class="text-white section-heading">Maximize seus Ganhos: Tocar Nunca Foi Tão Rentável</h2>
+                    <hr class="light my-4">
+                    <p class="text-faded mb-4">Seja o DJ do seu próprio destino com o Pay and Play. Receba dinheiro em troca de tocar as músicas escolhidas pelos seus fãs. Simples, direto e lucrativo. Junte-se à revolução musical agora mesmo.</p>
+                    <a class="btn btn-light btn-xl" role="button" data-bss-hover-animate="pulse" asp-controller="Login" asp-action="LoginUtilizador">Get Started!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="SERVICOS">
+        <div class="container" data-aos="zoom-in">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Ao teu Serviço</h2>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" data-aos="zoom-in">
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="mx-auto service-box mt-5"></div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="mx-auto service-box mt-5">
+                        <i class="fa fa-music fa-4x text-primary mb-3 sr-icons"></i>
+                        <h3 class="mb-3">Pay&amp;Play</h3>
+                        <p class="text-muted mb-0">Escolha, pague, e curta a música com o Pay and Play.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="mx-auto service-box mt-5">
+                        <i class="fas fa-money-bill-wave fa-4x text-primary mb-3 sr-icons" style="color: f05f40;"></i>
+                        <h3 class="mb-3">Play&amp;Earn</h3>
+                        <p class="text-muted mb-0">Toque, ganhe e encante com o Play and Earn.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="mx-auto service-box mt-5"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="PARTNERS" class="p-0">
+        <div class="container-fluid p-0" data-aos="zoom-in" style="padding-left: 0px;margin-left: 0px;">
+            <div class="row">
+                <div class="col-lg-12 text-center" style="height: 100px;">
+                    <h2 class="section-heading">Alguns dos Nossos Parceiros</h2>
+                    <hr class="my-4">
+                </div>
+            </div>
+            <div class="row g-0 justify-content-start align-items-start popup-gallery" style="width: auto;height: auto;">
+                <div class="col-sm-6 col-lg-4 offset-xxl-2" style="width: 300px;">
+                    <a class="portfolio-box" href="https://festivalsudoeste.com">
+                        <img class="img-fluid" src="/Pictures/msudo.png">
+                        <div class="portfolio-box-caption" style="width: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>MEO SUDOESTE</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="width: 300px;">
+                    <a class="portfolio-box" href="https://maresvivas.meo.pt">
+                        <img class="img-fluid" src="/Pictures/MaresVivas.jpeg">
+                        <div class="portfolio-box-caption" style="width: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>MEO MARÉS VIVAS</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="width: 300px;">
+                    <a class="portfolio-box" href="https://nosalive.com/">
+                        <img class="img-fluid" src="/Pictures//NosAlive.png">
+                        <div class="portfolio-box-caption" style="width: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>NOS ALIVE</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="width: auto;height: auto;margin: 0px;">
+                <div class="col-sm-6 col-lg-4 offset-xxl-2" style="width: 300px;padding: 0px;">
+                    <a class="portfolio-box" href="https://radionovaera.pt/beach-party/line-up" style="width: 300px;height: 300px;">
+                        <div class="portfolio-box-caption" style="width: 300px;height: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>NOVA ERA BEACH PARTY</span></div>
+                            </div>
+                        </div><img class="img-fluid" src="/Pictures/novaEra.jpg">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="width: 300px;padding: 0px;">
+                    <a class="portfolio-box" href="https://rockinriolisboa.pt/" style="width: 300px;">
+                        <img class="img-fluid" src="/Pictures/Rock%20in%20Rio.jpg">
+                        <div class="portfolio-box-caption" style="width: 300px;height: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>ROCK IN RIO</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4" style="width: 300px;padding: 0px;">
+                    <a class="portfolio-box" href="https://portugal.rollingloud.com/" style="width: 300px;">
+                        <img class="img-fluid" src="/Pictures/RollingLoud.png">
+                        <div class="portfolio-box-caption" style="width: 300px;">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name"><span>ROLLING LOUD</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact-1">
+        <div class="container" data-aos="zoom-in">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h2 class="section-heading">Entra em Contacto</h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Pronto para levar o seu evento ao próximo nível? Incrível! Entre em contacto connosco por telefone ou email e responderemos assim que possível!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 text-center ms-auto">
+                    <i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p>+351 919 794 393</p>
+                </div>
+                <div class="col-lg-4 text-center me-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true" class="fa-3x mb-3 sr-contact" style="color: var(--bs-emphasis-color);">
+                        <path d="M0 0h24v24H0V0z" fill="none"></path>
+                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path>
+                    </svg>
+                    <p><a href="mailto:afonsopro.business@gmail.com">afonsopro.business@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/aos.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bs-init.js"></script>
+    <script src="/lib/bootstrap/dist/js/baguetteBox.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/creative.js"></script>
+</body>
+
+</html>

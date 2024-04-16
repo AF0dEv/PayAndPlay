@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PayAndPlay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cf9ccccc09468e2638e489b0c5b02be5a013c61")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af3925600fb74c93580a01c65c1d1ec457e8c3b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("PayAndPlay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PayAndPlay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

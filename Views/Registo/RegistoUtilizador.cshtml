@@ -1,37 +1,66 @@
-﻿@{
-    ViewData["Title"] = "Registo Utilizador";
-}
+﻿<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-<h1>Registo</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register User</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/fonts/font-awesome.min.css">
+</head>
 
-<form method="post" id="formRegisto">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="Email" required>
+<body class="d-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="background: linear-gradient(0deg, rgb(240,95,64) 0%, white 100%);">
+    <div class="container" style="border-radius: 15px;background: #ffffff;margin-top: 15vh;">
+        <div class="row">
+            <div class="col-md-6" style="background: url(/Pictures/LoginIcon.png) center / contain no-repeat,   rgba(255,255,255,0);">
+                <div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form method="post" id="formRegisto">
+                    <div>
+                        <p style="font-size: 25px;font-weight: bold;letter-spacing: 1px;">USER REGISTER</p>
+                        <div style="background: #f1f1f1;border-radius: 25px;padding: 10px;">
+                            <i class="fa fa-envelope" style="margin-left: 15px;color: rgb(152,152,152);font-size: 16px;"></i>
+                            <input type="email" style="background: rgba(255,255,255,0);border-style: none;margin-left: 10px;color: rgb(152,152,152);" placeholder="Email" name="Email" required>
+                        </div>
+                        <div style="background: #f1f1f1;border-radius: 25px;padding: 10px;margin-top: 15px;">
+                            <i class="fa fa-user" style="margin-left: 15px;color: rgb(152,152,152);font-size: 20px;"></i>
+                            <input type="text" style="background: rgba(255,255,255,0);border-style: none;margin-left: 10px;color: rgb(152,152,152);" placeholder="UserName" name="UserName" required>
+                        </div>
+                        <div style="background: #f1f1f1;border-radius: 25px;padding: 10px;margin-top: 15px;">
+                            <i class="fa fa-lock" style="margin-left: 15px;color: rgb(152,152,152);font-size: 20px;"></i>
+                            <input type="password" style="background: rgba(255,255,255,0);border-style: none;margin-left: 10px;color: rgb(152,152,152);" placeholder="Password" name="Password" required>
+                        </div>
+                        <div style="background: #f1f1f1;border-radius: 25px;padding: 10px;margin-top: 15px;">
+                            <i class="fa fa-lock" style="margin-left: 15px;color: rgb(152,152,152);font-size: 20px;"></i>
+                            <input type="password" style="background: rgba(255,255,255,0);border-style: none;margin-left: 10px;color: rgb(152,152,152);" placeholder="Confirm Password" name="ConfirmPassword" required>
+                        </div>
+                        <div>
+                            <button type="submit" class="text-center" style="background: var(--bs-success);border-radius: 25px;padding: 10px;margin-top: 15px; width: 100%;">Register</button>
+                        </div>
+                        <div>
+                            <p class="text-center" style="margin-top: 10px;color: rgb(152,152,152);">Already have an Account ? <a asp-controller="Login" asp-action="LoginUtilizador">Click Here!</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="Username" required>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="Password" required>
-    </div>
-    <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("formRegisto").addEventListener("submit", function (event) {
+            var password = document.getElementsByName("Password")[0].value;
+            var confirmPassword = document.getElementsByName("ConfirmPassword")[0].value;
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                var messageElement = document.createElement("alert");
+                messageElement.innerText = "Passwords don't match";
+                document.body.appendChild(messageElement);
+            }
+        });
+    </script>
+</body>
 
-<script>
-    document.getElementById('formRegisto').addEventListener('submit', function (event) {
-        var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirmPassword').value;
-
-        if (password !== confirmPassword) {
-            alert('Passwords do not match.');
-            event.preventDefault(); // Prevent form submission
-        }
-    });
-</script>
+</html>
