@@ -1,45 +1,74 @@
 ﻿@model PayAndPlay.Models.MusicaInPlayList
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-@{
-    ViewData["Title"] = "Musicas DJ";
-}
-<h1>Selecione Música</h1>
-    @if (ViewBag.MUSICAS != null && ViewBag.PLAYLISTS != null)
-{
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    PlayList
-                </th>
-                <th>
-                    Música
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Musica item in ViewBag.MUSICAS)
-            {
-                <tr>
-                    <td>
-                        @ViewBag.PLAYLISTS.Nome
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        <form>
-                            <button type="submit" formmethod="post" asp-route-id="@item.ID">Selecionar</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Este DJ não tem PlayLists Disponiveis</p>
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background: url(/Pictures/bgUserProfile.jpg) center / cover no-repeat;">
+    <div class="container" style="padding-top: 70px">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p style="text-align: center;color: var(--bs-secondary-bg);font-weight: bold;font-size: 50px;">Escolha a Música</p>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div></div>
+                <div class="table-responsive">
+                    @if (ViewBag.MUSICAS != null && ViewBag.PLAYLISTS != null)
+                    {
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        PlayList
+                                    </th>
+                                    <th>
+                                        Música
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Musica item in ViewBag.MUSICAS)
+                                {
+                                    <tr>
+                                        <td>
+                                            @ViewBag.PLAYLISTS.Nome
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                            <form>
+                                                <button type="submit" formmethod="post" asp-route-id="@item.ID">Selecionar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>Este DJ não tem Musicas Disponiveis nesta PlayList</p>
+                    }
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

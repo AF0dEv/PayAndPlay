@@ -3,18 +3,19 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div style="padding-top: 70px;">
 
 <h1>Edit</h1>
 
 <h4>Perfil</h4>
-<hr />
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="Tipo_Perfil" class="control-label"></label>
+                <label asp-for="Tipo_Perfil" class="control-label">Tipo Perfil</label>
                 <input asp-for="Tipo_Perfil" class="form-control" />
                 <span asp-validation-for="Tipo_Perfil" class="text-danger"></span>
             </div>

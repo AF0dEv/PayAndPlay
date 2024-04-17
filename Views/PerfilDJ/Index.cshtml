@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
     <title>Profile</title>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body style ="background: url('/Pictures/bgDJRegLog.jpg') no-repeat;background-size: cover;">
@@ -19,7 +19,11 @@
             <div class="col-md-12 col-xl-2">
                 <div>
                     <p style="color: var(--bs-secondary-bg);font-weight: bold;">Saldo: @ViewBag.SALDO</p>
-                    <div><button class="btn btn-primary" type="button" style="color: var(--bs-btn-color);background: var(--bs-success);border-radius: 15px;margin-left: 42px;">Levantar</button></div>
+                    <div>
+                        <form asp-controller="PerfilDJ" asp-action="LevantarDinheiro" method="post">
+                            <button type="submit" id="btnLevantar" class="btn btn-primary" style="color: var(--bs-btn-color);background: var(--bs-success);border-radius: 15px;margin-left: 42px;">Levantar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

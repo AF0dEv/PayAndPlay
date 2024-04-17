@@ -18,7 +18,7 @@ namespace PayAndPlay.Models
         {
             // Calcular o saldo de um DJ
             decimal Saldo = _context.Tpedidos
-                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO")
+                .Where(p => p.DJId == DjId && p.Estado == "CONCLUIDO" || p.Estado == "LEVANTAMENTO")
                 .Sum(p => p.Custo_Pedido);
             return Saldo;
         }

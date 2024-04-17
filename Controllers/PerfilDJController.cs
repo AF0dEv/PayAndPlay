@@ -119,5 +119,21 @@ namespace PayAndPlay.Controllers
                 return View("Index");
             }
         }
+        [HttpPost]
+        public IActionResult LevantarDinheiro()
+        {
+            ls = new Listagem(_context);
+            decimal saldo = ls.CalculoSaldoDJ(int.Parse(HttpContext.Session.GetString("ID")));
+            Pedido p = new Pedido();
+            p.DJId = int.Parse(HttpContext.Session.GetString("ID"));
+            p.UtilizadorId = 1;
+            p.Custo_Pedido = 0 - saldo;
+            p.Estado = "LEVANTAMENTO";
+            p.Data = DateOnly.FromDateTime(DateTime.Now);
+            p.MusicaInPlayListId = 6;
+            _context.Tpedidos.Add(p);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "PerfilDJ");
+        }
     }
-}
+}// FIQUEI AQUI, EM PRINCIPIO 100% FEITO O PROJETO, FAZER OS ULTIMOS AJUSTES E VER ONDE POSSO MELHORAR, MINIMAL VIABLE PRODUCT DONE

@@ -1,67 +1,98 @@
 ﻿@model IEnumerable<PayAndPlay.Models.Pedido>
-<h1>Pedido</h1>
-@{
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Data
-                </th>
-                <th>
-                    Custo_Pedido
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th>
-                    Utilizador
-                </th>
-                <th>
-                    DJ
-                </th>
-                <th>
-                    PlayList
-                </th>
-                <th>
-                    Musica
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var p in Model)
-            {
-                <tr>
-                    <td>
-                        @p.Data
-                    </td>
-                    <td>
-                        @p.Custo_Pedido
-                    </td>
-                    <td>
-                        @p.Estado
-                    </td>
-                    <td>
-                        @p.Utilizador.UserName
-                    </td>
-                    <td>
-                        @p.DJ.UserName
-                    </td>
-                    <td>
-                        @p.MusicaInPlayList.PlayList.Nome
-                    </td>
-                    <td>
-                        @p.MusicaInPlayList.Musica.Nome
-                    </td>
-                    <td>
-                    <form>
-                        <button class="btn btn-success" asp-action="PagarPedido" asp-route-id="@p.ID">Pagar</button> |
-                        <button class="btn btn-danger" asp-action="RecusarPedido" asp-route-id="@p.ID">Cancelar</button>
-                    </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-   }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background: url(/Pictures/bgUserProfile.jpg) center / cover no-repeat;">
+    <div class="container" style="padding-top: 70px">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p style="text-align: center;color: var(--bs-secondary-bg);font-weight: bold;font-size: 50px;">Finalizar o Pedido</p>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col">
+                <div></div>
+                <div class="table-responsive">
+                    @{
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Data
+                                    </th>
+                                    <th>
+                                        Custo_Pedido
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Utilizador
+                                    </th>
+                                    <th>
+                                        DJ
+                                    </th>
+                                    <th>
+                                        PlayList
+                                    </th>
+                                    <th>
+                                        Musica
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var p in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @p.Data
+                                        </td>
+                                        <td>
+                                            @p.Custo_Pedido
+                                        </td>
+                                        <td>
+                                            @p.Estado
+                                        </td>
+                                        <td>
+                                            @p.Utilizador.UserName
+                                        </td>
+                                        <td>
+                                            @p.DJ.UserName
+                                        </td>
+                                        <td>
+                                            @p.MusicaInPlayList.PlayList.Nome
+                                        </td>
+                                        <td>
+                                            @p.MusicaInPlayList.Musica.Nome
+                                        </td>
+                                        <td>
+                                            <form>
+                                                <button class="btn btn-success" asp-action="PagarPedido" asp-route-id="@p.ID">Pagar</button> |
+                                                <button class="btn btn-danger" asp-action="RecusarPedido" asp-route-id="@p.ID">Cancelar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

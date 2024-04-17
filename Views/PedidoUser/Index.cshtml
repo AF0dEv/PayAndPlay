@@ -1,42 +1,69 @@
 ﻿@using System.Net.NetworkInformation
 @model IEnumerable<PayAndPlay.Models.DJ>
-@{
-    ViewData["Title"] = "QRCODE SCANNER";
-}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-<div>
-    <video id="cameraFeed" autoplay></video>
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
 
-@section Scripts {
-    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
-    <script>
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-            .then(function (stream) {
+<body>
+    @*fiquei aqui falta as views daqui para a frente pedido user*@
+    <div class="container" style="padding-top: 70px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p style="font-size: 50px;font-weight: bold;text-align: center;">QR CODE SCANNER</p>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row" style="height: 250px;">
+            <div class="col"></div>
+            <div class="col">
+                <div></div>    <video id="cameraFeed" autoplay></video>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @section Scripts {
+        <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
+        <script>
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(function (stream) {
+                    var video = document.getElementById('cameraFeed');
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+                    video.play();
+                    requestAnimationFrame(tick);
+                });
+
+            function tick() {
                 var video = document.getElementById('cameraFeed');
-                video.srcObject = stream;
-                video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-                video.play();
-                requestAnimationFrame(tick);
-            });
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        function tick() {
-            var video = document.getElementById('cameraFeed');
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                var canvas = document.createElement("canvas");
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                var ctx = canvas.getContext("2d");
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                var code = jsQR(imageData.data, imageData.width, imageData.height);
-                if (code) {
-                    console.log("Found QR code", code);
-                    window.location.href = code.data; // Redirect to the URL encoded in the QR code
+                    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    var code = jsQR(imageData.data, imageData.width, imageData.height);
+                    if (code) {
+                        console.log("Found QR code", code);
+                        window.location.href = code.data; // Redirect to the URL encoded in the QR code
+                    }
                 }
+                requestAnimationFrame(tick);
             }
-            requestAnimationFrame(tick);
-        }
-    </script>
-}
+        </script>
+    }
+</body>
+
+</html>
+

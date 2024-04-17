@@ -3,11 +3,12 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div style="padding-top: 70px;">
 
 <h1>Create</h1>
 
 <h4>Pedido</h4>
-<hr />
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -32,7 +33,7 @@
                 <select asp-for="UtilizadorId" class ="form-control" asp-items="ViewBag.UtilizadorId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="DJId" class="control-label"></label>
+                <label asp-for="DJId" class="control-label">DJ</label>
                 <select asp-for="DJId" class ="form-control" asp-items="ViewBag.DJId"></select>
             </div>
             <div class="form-group">

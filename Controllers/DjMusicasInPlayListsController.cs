@@ -82,8 +82,8 @@ namespace PayAndPlay.Controllers
             {
                 return NotFound();
             }
-            ViewData["Musica"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayList"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome");
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome");
             return View(musicaInPlayList);
         }
 
@@ -119,8 +119,8 @@ namespace PayAndPlay.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome", musicaInPlayList.PlayListId);
+            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome");
+            ViewData["PlayListId"] = new SelectList(_context.TplayLists.Where(p => p.DJId == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "Nome");
             return View(musicaInPlayList);
         }
 

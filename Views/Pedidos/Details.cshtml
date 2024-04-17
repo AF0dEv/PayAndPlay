@@ -3,12 +3,15 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div style="padding-top: 70px;">
 
 <h1>Details</h1>
 
-<div>
     <h4>Pedido</h4>
-    <hr />
+
+    </div>
+<div>
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Data)
@@ -41,10 +44,10 @@
             @Html.DisplayFor(model => model.DJ.ID)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MusicaInPlayList)
+            MIP_ID
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MusicaInPlayList.ID)
+            @Html.DisplayFor(model => model.MusicaInPlayList.ID )
         </dd>
     </dl>
 </div>
