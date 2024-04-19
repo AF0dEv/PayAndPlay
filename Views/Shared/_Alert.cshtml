@@ -1,0 +1,23 @@
+﻿@*Partial View para a div dos alerts com script que ve a tempData message, verifica se e o prefixo e success ou error e muda o estilo de apresentacao de acordo, retirando o prefixo e apendendo a mensagem a div criada acima*@
+<div id="alert-placeholder"></div>
+
+<script>
+    window.onload = function () {
+        var message = '@TempData["Message"]';
+        if (message) {
+            var alertDiv = document.createElement('div');
+            alertDiv.textContent = message.substring(message.indexOf(':') + 1).trim(); // Remove the identifier from the message
+
+            if (message.startsWith('Success:')) {
+                alertDiv.className = 'alert alert-success';
+            } else if (message.startsWith('Error:')) {
+                alertDiv.className = 'alert alert-danger';
+            }
+
+            document.getElementById('alert-placeholder').appendChild(alertDiv);
+            setTimeout(function () {
+                alertDiv.remove();
+            }, 5000);
+        }
+    };
+</script>

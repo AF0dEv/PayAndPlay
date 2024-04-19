@@ -10,6 +10,7 @@ using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
+    // CRUD MusicasInPlayLists para Admins
     public class MusicasInPlayListsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,36 +23,60 @@ namespace PayAndPlay.Controllers
         // GET: MusicasInPlayLists
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.TmusicaInPlayLists.Include(m => m.Musica).Include(m => m.PlayList);
-            return View(await applicationDbContext.ToListAsync());
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
+            {
+                var applicationDbContext = _context.TmusicaInPlayLists.Include(m => m.Musica).Include(m => m.PlayList);
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: MusicasInPlayLists/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var musicaInPlayList = await _context.TmusicaInPlayLists
-                .Include(m => m.Musica)
-                .Include(m => m.PlayList)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (musicaInPlayList == null)
+                var musicaInPlayList = await _context.TmusicaInPlayLists
+                    .Include(m => m.Musica)
+                    .Include(m => m.PlayList)
+                    .FirstOrDefaultAsync(m => m.ID == id);
+                if (musicaInPlayList == null)
+                {
+                    return NotFound();
+                }
+
+                return View(musicaInPlayList);
+            }
+            else
             {
-                return NotFound();
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
-
-            return View(musicaInPlayList);
         }
 
         // GET: MusicasInPlayLists/Create
         public IActionResult Create()
         {
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID");
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID");
-            return View();
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
+            {
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID");
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID");
+                return View();
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: MusicasInPlayLists/Create
@@ -61,33 +86,49 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,MusicaId,PlayListId")] MusicaInPlayList musicaInPlayList)
         {
-            if (ModelState.IsValid)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                _context.Add(musicaInPlayList);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(musicaInPlayList);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                return View(musicaInPlayList);
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
-            return View(musicaInPlayList);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: MusicasInPlayLists/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var musicaInPlayList = await _context.TmusicaInPlayLists.FindAsync(id);
-            if (musicaInPlayList == null)
-            {
-                return NotFound();
+                var musicaInPlayList = await _context.TmusicaInPlayLists.FindAsync(id);
+                if (musicaInPlayList == null)
+                {
+                    return NotFound();
+                }
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                return View(musicaInPlayList);
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
-            return View(musicaInPlayList);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: MusicasInPlayLists/Edit/5
@@ -97,54 +138,70 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,MusicaId,PlayListId")] MusicaInPlayList musicaInPlayList)
         {
-            if (id != musicaInPlayList.ID)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id != musicaInPlayList.ID)
+                {
+                    return NotFound();
+                }
 
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(musicaInPlayList);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MusicaInPlayListExists(musicaInPlayList.ID))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(musicaInPlayList);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!MusicaInPlayListExists(musicaInPlayList.ID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                return View(musicaInPlayList);
             }
-            ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-            ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
-            return View(musicaInPlayList);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: MusicasInPlayLists/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var musicaInPlayList = await _context.TmusicaInPlayLists
-                .Include(m => m.Musica)
-                .Include(m => m.PlayList)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (musicaInPlayList == null)
+                var musicaInPlayList = await _context.TmusicaInPlayLists
+                    .Include(m => m.Musica)
+                    .Include(m => m.PlayList)
+                    .FirstOrDefaultAsync(m => m.ID == id);
+                if (musicaInPlayList == null)
+                {
+                    return NotFound();
+                }
+
+                return View(musicaInPlayList);
+            }
+            else
             {
-                return NotFound();
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
-
-            return View(musicaInPlayList);
         }
 
         // POST: MusicasInPlayLists/Delete/5
@@ -152,7 +209,9 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var musicaInPlayList = await _context.TmusicaInPlayLists.FindAsync(id);
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
+            {
+                var musicaInPlayList = await _context.TmusicaInPlayLists.FindAsync(id);
             if (musicaInPlayList != null)
             {
                 _context.TmusicaInPlayLists.Remove(musicaInPlayList);
@@ -160,6 +219,12 @@ namespace PayAndPlay.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         private bool MusicaInPlayListExists(int id)

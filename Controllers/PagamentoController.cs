@@ -5,6 +5,8 @@ using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
+    // Estados possíveis de um pedido: Pendente, Concluido, Pago, Recusado
+    // Controlador para a gestão de pagamentos dos Pedidos dos Utilizadores
     public class PagamentoController : Controller
     {
         private IEnumerable<Pedido> pedido;
@@ -15,22 +17,49 @@ namespace PayAndPlay.Controllers
         }
         public IActionResult Index(int id)
         {
-            pedido = _context.Tpedidos.Include(p => p.DJ).Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.MusicaInPlayList.Musica).Where(p => p.ID == id && p.Estado == "PENDENTE").ToList();
-            return View(pedido);
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
+            {
+                pedido = _context.Tpedidos.Include(p => p.DJ).Include(p => p.Utilizador).Include(p => p.MusicaInPlayList.PlayList).Include(p => p.MusicaInPlayList.Musica).Where(p => p.ID == id && p.Estado == "PENDENTE").ToList();
+                return View(pedido);
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
+
         }
         public IActionResult PagarPedido(int id) 
         {
-            Pedido p = _context.Tpedidos.Find(id);
-            p.Estado = "PAGO";
-            _context.SaveChanges();
-            return RedirectToAction("Index", "PedidoUser");
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
+            {
+                Pedido p = _context.Tpedidos.Find(id);
+                p.Estado = "PAGO";
+                _context.SaveChanges();
+                TempData["Message"] = "Success: Pedido Pago";
+                return RedirectToAction("Index", "PedidoUser");
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
         public IActionResult RecusarPedido(int id) 
         {
-            Pedido p = _context.Tpedidos.Find(id);
-            p.Estado = "RECUSADO";
-            _context.SaveChanges();
-            return View();
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
+            {
+                Pedido p = _context.Tpedidos.Find(id);
+                p.Estado = "RECUSADO";
+                _context.SaveChanges();
+                TempData["Message"] = "Error: Pedido Recusado";
+                return RedirectToAction("Index", "PedidoUser");
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

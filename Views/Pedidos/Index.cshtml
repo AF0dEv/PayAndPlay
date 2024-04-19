@@ -1,67 +1,95 @@
 ﻿@model IEnumerable<PayAndPlay.Models.Pedido>
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
 
-@{
-    ViewData["Title"] = "Index";
-}
-<div style="padding-top: 70px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">>
+</head>
 
-<h1>Index</h1>
+<body style="background: url('/Pictures/bgHome.jpg'); no-repeat;background-size: cover;">
+    <div class="container" style="padding-top: 70px;">
+        @{
+            Html.RenderPartial("_Alert");
+        }
+        <div class="row">
+            <div class="col-md-12 offset-xl-0">
+                <div>
+                    <p style="color: var(--bs-secondary-bg);font-weight: bold;font-size: 40px;text-align: center;">PEDIDOS</p>
+                    <p>
+                        <a asp-action="Create">Create New</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Data)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Custo_Pedido)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Estado)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Utilizador)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DJ)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MusicaInPlayList)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Data)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Custo_Pedido)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Estado)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Utilizador.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DJ.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MusicaInPlayList.ID)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Custo_Pedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Utilizador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DJ)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MusicaInPlayList)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Custo_Pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Utilizador.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DJ.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MusicaInPlayList.ID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

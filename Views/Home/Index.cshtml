@@ -14,11 +14,26 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/aos.min.css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/animate.min.css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/baguetteBox.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
-    <header class="text-center text-white d-flex masthead" style="background: url('/Pictures/bgHome.jpg'); bottom / cover no-repeat;">
-        <div class="container my-auto">
+    <header class="text-center text-white d-flex masthead" style="background: url('/Pictures/bgHome.jpg'); center / cover no-repeat;">
+        <div class="container" style="padding-top: 70px">
+            @{
+                Html.RenderPartial("_Alert");
+            }
             <div class="row">
                 <div class="col-lg-10 mx-auto" style="background: rgba(0,0,0,0.15);">
                     <h1 class="text-uppercase" style="background: rgba(0,0,0,0);"><strong>Escolha, pague e curta com o nosso dj</strong></h1>
@@ -162,7 +177,7 @@
             <div class="row">
                 <div class="col-lg-4 text-center ms-auto">
                     <i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
-                    <p>+351 919 794 393</p>
+                    <a href="tel:+351919794393">+351 919 794 393</a>
                 </div>
                 <div class="col-lg-4 text-center me-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true" class="fa-3x mb-3 sr-contact" style="color: var(--bs-emphasis-color);">

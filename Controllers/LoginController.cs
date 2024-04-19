@@ -5,6 +5,7 @@ using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
+    // Controller para fazer login, verifica se o utilizador é um administrador, um utilizador ou um DJ, e redireciona para a página correta
     public class LoginController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -16,7 +17,6 @@ namespace PayAndPlay.Controllers
 
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("CONTROLADOR", "Home");
             return View();
         }
 
@@ -33,7 +33,8 @@ namespace PayAndPlay.Controllers
                 HttpContext.Session.SetString("ID", user.ID.ToString()!);
                 HttpContext.Session.SetString("PERFIL", "3");
                 HttpContext.Session.SetString("ADMIN", "true");
-                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                TempData["Message"] = "Success: Bem-vindo " + user.UserName;
+                return RedirectToAction("Index", "Home");
             }
             else if (user.Is_Admin == false && user.PerfilId == 1)
             {
@@ -41,7 +42,8 @@ namespace PayAndPlay.Controllers
                 HttpContext.Session.SetString("ADMIN", "false");
                 HttpContext.Session.SetString("ID", user.ID.ToString()!);
                 HttpContext.Session.SetString("UTILIZADOR", user.UserName!);
-                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                TempData["Message"] = "Success: Bem-vindo " + user.UserName;
+                return RedirectToAction("Index", "PerfilUser");
             }
             return View();
         }
@@ -59,7 +61,8 @@ namespace PayAndPlay.Controllers
                 HttpContext.Session.SetString("PERFIL", "2");
                 HttpContext.Session.SetString("UTILIZADOR", dj.UserName!);
                 HttpContext.Session.SetString("ID", dj.ID.ToString()!);
-                return Redirect("~/" + HttpContext.Session.GetString("CONTROLADOR") + "/Index");
+                TempData["Message"] = "Success: Bem-vindo " + dj.UserName;
+                return RedirectToAction("Index", "PerfilDJ");
             }
         }
     }

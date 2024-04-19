@@ -10,6 +10,8 @@ using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
+    // CRUD de Pedidos para Admins
+    // Estados possíveis: Pendente, Pago, Recusado, Concluido, Levantamento
     public class PedidosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,38 +24,64 @@ namespace PayAndPlay.Controllers
         // GET: Pedidos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tpedidos.Include(p => p.DJ).Include(p => p.MusicaInPlayList).Include(p => p.Utilizador);
-            return View(await applicationDbContext.ToListAsync());
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
+            {
+                var applicationDbContext = _context.Tpedidos.Include(p => p.DJ).Include(p => p.MusicaInPlayList).Include(p => p.Utilizador);
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: Pedidos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
 
-            var pedido = await _context.Tpedidos
-                .Include(p => p.DJ)
-                .Include(p => p.MusicaInPlayList)
-                .Include(p => p.Utilizador)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (pedido == null)
+                var pedido = await _context.Tpedidos
+                    .Include(p => p.DJ)
+                    .Include(p => p.MusicaInPlayList)
+                    .Include(p => p.Utilizador)
+                    .FirstOrDefaultAsync(m => m.ID == id);
+                if (pedido == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
+                TempData["Message"] = "Success: Pedido encontrado!";
+                return View(pedido);
+            }
+            else
             {
-                return NotFound();
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
-
-            return View(pedido);
         }
 
         // GET: Pedidos/Create
         public IActionResult Create()
         {
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName");
-            ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID");
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName");
-            return View();
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
+            {
+                ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName");
+                ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID");
+                ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName");
+                return View();
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: Pedidos/Create
@@ -63,35 +91,54 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Data,Custo_Pedido,Estado,UtilizadorId,DJId,MusicaInPlayListId")] Pedido pedido)
         {
-            if (ModelState.IsValid)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                _context.Add(pedido);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(pedido);
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Pedido criado com sucesso!";
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
+                ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
+                ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
+                return View(pedido);
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
-            ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
-            return View(pedido);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
         
         // GET: Pedidos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
 
-            var pedido = await _context.Tpedidos.FindAsync(id);
-            if (pedido == null)
-            {
-                return NotFound();
+                var pedido = await _context.Tpedidos.FindAsync(id);
+                if (pedido == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
+                ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
+                ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
+                ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
+                return View(pedido);
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", pedido.DJId);
-            ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "UserName", pedido.UtilizadorId);
-            return View(pedido);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: Pedidos/Edit/5
@@ -101,56 +148,77 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Data,Custo_Pedido,Estado,UtilizadorId,DJId,MusicaInPlayListId")] Pedido pedido)
         {
-            if (id != pedido.ID)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id != pedido.ID)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
 
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(pedido);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PedidoExists(pedido.ID))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(pedido);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!PedidoExists(pedido.ID))
+                        {
+                            TempData["Message"] = "Error: Pedido não encontrado!";
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    TempData["Message"] = "Success: Pedido atualizado com sucesso!";
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", pedido.DJId);
+                ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
+                ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "ID", pedido.UtilizadorId);
+                return View(pedido);
             }
-            ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", pedido.DJId);
-            ViewData["MusicaInPlayListId"] = new SelectList(_context.TmusicaInPlayLists, "ID", "ID", pedido.MusicaInPlayListId);
-            ViewData["UtilizadorId"] = new SelectList(_context.Tutilizadores, "ID", "ID", pedido.UtilizadorId);
-            return View(pedido);
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: Pedidos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
 
-            var pedido = await _context.Tpedidos
-                .Include(p => p.DJ)
-                .Include(p => p.MusicaInPlayList)
-                .Include(p => p.Utilizador)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (pedido == null)
+                var pedido = await _context.Tpedidos
+                    .Include(p => p.DJ)
+                    .Include(p => p.MusicaInPlayList)
+                    .Include(p => p.Utilizador)
+                    .FirstOrDefaultAsync(m => m.ID == id);
+                if (pedido == null)
+                {
+                    TempData["Message"] = "Error: Pedido não encontrado!";
+                    return NotFound();
+                }
+
+                return View(pedido);
+            }
+            else
             {
-                return NotFound();
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
-
-            return View(pedido);
         }
 
         // POST: Pedidos/Delete/5
@@ -158,14 +226,23 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pedido = await _context.Tpedidos.FindAsync(id);
-            if (pedido != null)
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                _context.Tpedidos.Remove(pedido);
-            }
+                var pedido = await _context.Tpedidos.FindAsync(id);
+                if (pedido != null)
+                {
+                    _context.Tpedidos.Remove(pedido);
+                }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
+                TempData["Message"] = "Success: Pedido removido com sucesso!";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         private bool PedidoExists(int id)

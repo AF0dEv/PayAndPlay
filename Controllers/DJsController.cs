@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
 
 namespace PayAndPlay.Controllers
 {
+    // CRUD Criado para o Admin gerenciar os DJs, onde ele pode adicionar, editar e remover DJs, MVC Controller
     public class DJsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,27 +20,22 @@ namespace PayAndPlay.Controllers
         // GET: DJs
         public async Task<IActionResult> Index()
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 var applicationDbContext = _context.Tdjs.Include(d => d.Perfil);
                 return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
         }
 
         // GET: DJs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Details");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (id == null)
                 {
@@ -55,20 +52,25 @@ namespace PayAndPlay.Controllers
 
                 return View(dJ);
             }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: DJs/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Create");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil");
                 return View();
+            }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
             }
         }
 
@@ -79,12 +81,7 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Email,UserName,Password,confirmPassword,PerfilId")] DJ dJ)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Create");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (ModelState.IsValid)
                 {
@@ -95,17 +92,17 @@ namespace PayAndPlay.Controllers
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", dJ.PerfilId);
                 return View(dJ);
             }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: DJs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Edit");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (id == null)
                 {
@@ -120,6 +117,11 @@ namespace PayAndPlay.Controllers
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", dJ.PerfilId);
                 return View(dJ);
             }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: DJs/Edit/5
@@ -129,12 +131,7 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Email,UserName,Password,confirmPassword,PerfilId")] DJ dJ)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Edit");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (id != dJ.ID)
                 {
@@ -164,17 +161,17 @@ namespace PayAndPlay.Controllers
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", dJ.PerfilId);
                 return View(dJ);
             }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // GET: DJs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Delete");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (id == null)
                 {
@@ -191,6 +188,11 @@ namespace PayAndPlay.Controllers
 
                 return View(dJ);
             }
+            else
+            {
+                TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         // POST: DJs/Delete/5
@@ -198,12 +200,7 @@ namespace PayAndPlay.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (HttpContext.Session.GetString("ADMIN") == "" || HttpContext.Session.GetString("ADMIN") == null && HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
-            {
-                HttpContext.Session.SetString("CONTROLADOR", "DJs/Delete");
-                return RedirectToAction("Index", "Login");
-            }
-            else
+            if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 var dJ = await _context.Tdjs.FindAsync(id);
                 if (dJ != null)
@@ -213,6 +210,10 @@ namespace PayAndPlay.Controllers
 
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
             }
         }
 

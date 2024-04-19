@@ -11,6 +11,9 @@
 
 <body style ="background: url('/Pictures/bgDJRegLog.jpg') no-repeat;background-size: cover;">
     <div class="container" style="padding-top: 70px;">
+        @{
+            Html.RenderPartial("_Alert");
+        }
         <div class="row">
             <div class="col">
                 <div></div>
@@ -54,6 +57,7 @@
                         <form method="post" action="@Url.Action("MostrarGanhosMes", "PerfilDJ")">
                                 <label style="font-size: 20px;color: var(--bs-secondary-bg);font-weight: bold;" for="month">Selecione Mês:</label>
                             <br />
+                            @*Select dos meses, loop que preenche com os nomes dos meses*@
                             <select id="month" name="month" onchange="this.form.submit()">
                                 @for (Int16 i = 0; i < 12; i++)
                                 {
@@ -147,6 +151,7 @@
             </div>
         </div>
     </div>
+    @* Script da Libraria jsdeliver.net/ chart.js cria graficos atraves de javascript, responsivos, e preenche os de acordo com as ViewBags *@
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

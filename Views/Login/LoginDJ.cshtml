@@ -10,6 +10,9 @@
 </head>
 
 <body class="d-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="background: linear-gradient(0deg, rgb(240,95,64) 0%, white 100%);">
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <div class="container" style="border-radius: 15px;background: #ffffff;margin-top: 15vh;">
         <div class="row">
             <div class="col-md-6" style="background: url(/Pictures/LoginIcon.png) center / contain no-repeat, rgba(255,255,255,0);">

@@ -2,6 +2,7 @@
 
 namespace PayAndPlay.Controllers
 {
+    // Controller responsável por efetuar o logout do utilizador, limpando as variáveis de sessão, e redirecionando para a página inicial
     public class LogOutController : Controller
     {
         public IActionResult Index()
@@ -10,8 +11,8 @@ namespace PayAndPlay.Controllers
             HttpContext.Session.SetString("ID", "");
             HttpContext.Session.SetString("PERFIL", "");
             HttpContext.Session.SetString("ADMIN", "");
-
-            return RedirectToAction("Index", "Login");
+            TempData["Message"] = "Success: Logout efetuado com sucesso!";
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace PayAndPlay.Controllers
 {
+    // Landing Page, Onde o Utilizador Consegue Ver a Página Inicial, Caso Não Esteja Logado ou seja Admin. 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -17,7 +18,6 @@ namespace PayAndPlay.Controllers
         {
             if (HttpContext.Session.GetString("UTILIZADOR") == "" || HttpContext.Session.GetString("UTILIZADOR") == null)
             {
-                HttpContext.Session.SetString("CONTROLADOR", "Home");
                 return View();
             }
             else if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
@@ -32,11 +32,6 @@ namespace PayAndPlay.Controllers
             {
                 return View();
             }
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

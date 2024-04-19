@@ -10,6 +10,9 @@
 </head>
 
 <body class="d-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="background: linear-gradient(0deg, rgb(240,95,64) 0%, white 100%);">
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <div class="container" style="border-radius: 15px;background: #ffffff;margin-top: 15vh;">
         <div class="row">
             <div class="col-md-6" style="background: url(/Pictures/LoginIcon.png) center / contain no-repeat, rgba(255,255,255,0);">
@@ -30,7 +33,6 @@
                             <input style="background: rgba(255,255,255,0);border-style: none;margin-left: 10px;color: rgb(152,152,152);" id="password" name="password" placeholder="Password" type="password" required>
                     </div>
                     <div>
-                            @*fiquei aqui, falta a pagina registo 2 e login dj*@
                             <button type="submit" class="text-center" style="background: var(--bs-success);border-radius: 25px;padding: 10px;margin-top: 15px; width: 100%;">Login</button>
                     </form>
                     <div>

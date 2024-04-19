@@ -11,6 +11,9 @@
 
 <body style="background: url('/Pictures/bgHome.jpg'); no-repeat;background-size: cover;">
     <div class="container" style="padding-top: 70px;">
+        @{
+            Html.RenderPartial("_Alert");
+        }
         <div class="row">
             <div class="col-md-12 offset-xl-0">
                 <div>
@@ -60,6 +63,7 @@
             </td>
             <td>
             @{
+                @*So o Admin tem Acesso a Editar e etc nas Musicas*@
                 if (Context.Session.GetString("UTILIZADOR") != "" && Context.Session.GetString("UTILIZADOR") != null && Context.Session.GetString("ADMIN") == "true" && Context.Session.GetString("PERFIL") == "3")
                 {
                    <a asp-action="Edit" asp-route-id="@item.ID">Edit |</a> 

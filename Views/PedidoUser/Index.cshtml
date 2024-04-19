@@ -11,8 +11,10 @@
 </head>
 
 <body>
-    @*fiquei aqui falta as views daqui para a frente pedido user*@
     <div class="container" style="padding-top: 70px;">
+        @{
+            Html.RenderPartial("_Alert");
+        }
         <div class="row">
             <div class="col-md-12">
                 <div>
@@ -33,7 +35,7 @@
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     @section Scripts {
         <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
-        <script>
+        <script> @* Esta Script Liga a Camara onde tem o video com o Id="cameraFeed" e a cada frame chama a funcao tick *@
             navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
                 .then(function (stream) {
                     var video = document.getElementById('cameraFeed');
@@ -42,7 +44,7 @@
                     video.play();
                     requestAnimationFrame(tick);
                 });
-
+                @* Esta funcao tick e chamada a cada frame e verifica se existe um QR Code na imagem, se encontrar QRCode, redireciona para O URL do QRCode *@
             function tick() {
                 var video = document.getElementById('cameraFeed');
                 if (video.readyState === video.HAVE_ENOUGH_DATA) {

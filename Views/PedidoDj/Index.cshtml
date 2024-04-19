@@ -11,6 +11,9 @@
 
 <body style="background: url('/Pictures/bgDJRegLog.jpg'); background-size: cover; background-repeat: repeat;">
     <div class="container" style="padding-top: 70px;">
+        @{
+            Html.RenderPartial("_Alert");
+        }
         <div class="row">
             <div class="col-md-12 offset-xl-0">
                 <div>
@@ -52,7 +55,6 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.MusicaInPlayList.Musica.Nome)
                                     </th>
-                                    @*adicionar aqui o nome da musica e playlist em vez de musica in playlist*@
                                     <th></th>
                                 </tr>
                             </thead>
