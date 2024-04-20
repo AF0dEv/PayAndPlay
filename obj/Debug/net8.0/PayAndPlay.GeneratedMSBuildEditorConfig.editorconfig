@@ -1,0 +1,291 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PayAndPlay
+build_property.RootNamespace = PayAndPlay
+build_property.ProjectDir = C:\Users\afons\source\repos\AF0dEv\PayAndPlay\PayAndPlay\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\afons\source\repos\AF0dEv\PayAndPlay\PayAndPlay
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjMusicasInPlayLists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpNdXNpY2FzSW5QbGF5TGlzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DjPlayList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGpQbGF5TGlzdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/DJs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcREpzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Login/LoginDJ.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5ESi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Login/LoginUtilizador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5VdGlsaXphZG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/MusicasInPlayLists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc0luUGxheUxpc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/MusicasInPlayLists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc0luUGxheUxpc3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/MusicasInPlayLists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc0luUGxheUxpc3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/MusicasInPlayLists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc0luUGxheUxpc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/MusicasInPlayLists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc0luUGxheUxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Musicas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Musicas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Musicas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Musicas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Musicas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzaWNhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pagamento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoDj/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvRGpcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pedidos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pedidos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pedidos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pedidos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Pedidos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/MusicasDjPedidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxNdXNpY2FzRGpQZWRpZG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PedidoUser/PlayListDjPedidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvVXNlclxQbGF5TGlzdERqUGVkaWRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PerfilDJ/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsREpcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PerfilUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Perfis/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Perfis/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Perfis/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Perfis/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Perfis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/PlayLists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/QRCode/CreateQRCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJDb2RlXENyZWF0ZVFSQ29kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Registo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0b1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Registo/RegistoDJ.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0b1xSZWdpc3RvREouY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Registo/RegistoUtilizador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0b1xSZWdpc3RvVXRpbGl6YWRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Shared/_Alert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Utilizadores/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGl6YWRvcmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Utilizadores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGl6YWRvcmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Utilizadores/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGl6YWRvcmVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Utilizadores/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGl6YWRvcmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Utilizadores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGl6YWRvcmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afons/source/repos/AF0dEv/PayAndPlay/PayAndPlay/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5di00rlwx4
