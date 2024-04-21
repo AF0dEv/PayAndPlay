@@ -9,18 +9,21 @@
     <h4>MusicaInPlayList</h4>
 </div>
 <div>
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Musica)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Musica.ID)
+            @Html.DisplayFor(model => model.Musica.ID) - <span style="color:lightgray">@Html.DisplayFor(model => model.Musica.Nome)</span>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PlayList)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PlayList.ID)
+            @Html.DisplayFor(model => model.PlayList.ID) - <span style="color:lightgray">@Html.DisplayFor(model => model.PlayList.Nome)</span>
         </dd>
     </dl>
 </div>

@@ -10,7 +10,9 @@
 
 </div>
 <div>
-
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)

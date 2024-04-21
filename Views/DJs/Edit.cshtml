@@ -9,6 +9,9 @@
 <h4>DJ</h4>
 </div>
 <div class="row">
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

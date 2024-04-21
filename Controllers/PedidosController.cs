@@ -57,7 +57,7 @@ namespace PayAndPlay.Controllers
                     TempData["Message"] = "Error: Pedido não encontrado!";
                     return NotFound();
                 }
-                TempData["Message"] = "Success: Pedido encontrado!";
+                TempData["Message"] = "Success: Pedido encontrado com Sucesso!";
                 return View(pedido);
             }
             else
@@ -162,6 +162,7 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(pedido);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: Pedido atualizado com sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -175,7 +176,6 @@ namespace PayAndPlay.Controllers
                             throw;
                         }
                     }
-                    TempData["Message"] = "Success: Pedido atualizado com sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "ID", pedido.DJId);
@@ -233,9 +233,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Tpedidos.Remove(pedido);
                 }
-
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Success: Pedido removido com sucesso!";
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Pedido removido com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Este Pedido nao pode ser removido! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

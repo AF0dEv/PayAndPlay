@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
@@ -65,7 +66,7 @@ namespace PayAndPlay.Controllers
         {
             if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "2" && HttpContext.Session.GetString("ADMIN") == "false")
             {
-                ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName");
+                ViewData["DJId"] = new SelectList(_context.Tdjs.Where(d => d.ID == int.Parse(HttpContext.Session.GetString("ID"))), "ID", "UserName");
                 return View();
             }
             else
@@ -216,9 +217,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.TplayLists.Remove(playList);
                 }
-
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Success: PlayList removida com sucesso!";
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: PlayList removida com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Esta PlayList nao pode ser removida! Por Favor, Contacte Admnistrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

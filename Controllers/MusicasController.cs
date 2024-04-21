@@ -132,13 +132,13 @@ namespace PayAndPlay.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Artista,Duracao,Custo")] Musica musica)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Nome,Artista,Duracao,Custo")] Musica musica)
         {
             if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
                 if (id != musica.ID)
                 {
-                    TempData["Message"] = "Error: Musica não encontrada!";
+                    TempData["Message"] = "Error: Musica nao encontrada!";
                     return NotFound();
                 }
 
@@ -148,6 +148,7 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(musica);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: Musica atualizada com sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -161,7 +162,6 @@ namespace PayAndPlay.Controllers
                             throw;
                         }
                     }
-                    TempData["Message"] = "Success: Musica atualizada com sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 return View(musica);

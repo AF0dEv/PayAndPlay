@@ -42,6 +42,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: Musica nao encontrada!";
                     return NotFound();
                 }
 
@@ -51,9 +52,10 @@ namespace PayAndPlay.Controllers
                     .FirstOrDefaultAsync(m => m.ID == id);
                 if (musicaInPlayList == null)
                 {
+                    TempData["Message"] = "Error: Musica nao encontrada!";
                     return NotFound();
                 }
-
+                TempData["Message"] = "Success: Musica encontrada com sucesso!";
                 return View(musicaInPlayList);
             }
             else
@@ -68,8 +70,8 @@ namespace PayAndPlay.Controllers
         {
             if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("ADMIN") == "true" && HttpContext.Session.GetString("PERFIL") == "3")
             {
-                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID");
-                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID");
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome");
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome");
                 return View();
             }
             else
@@ -92,10 +94,11 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Add(musicaInPlayList);
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Musica adicionada a PlayList com sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
-                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
                 return View(musicaInPlayList);
             }
             else
@@ -120,8 +123,8 @@ namespace PayAndPlay.Controllers
                 {
                     return NotFound();
                 }
-                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
                 return View(musicaInPlayList);
             }
             else
@@ -142,6 +145,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id != musicaInPlayList.ID)
                 {
+                    TempData["Message"] = "Error: Musica nao encontrada!";
                     return NotFound();
                 }
 
@@ -151,6 +155,7 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(musicaInPlayList);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: Musica na PlayList atualizada com sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -165,8 +170,8 @@ namespace PayAndPlay.Controllers
                     }
                     return RedirectToAction(nameof(Index));
                 }
-                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "ID", musicaInPlayList.MusicaId);
-                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "ID", musicaInPlayList.PlayListId);
+                ViewData["MusicaId"] = new SelectList(_context.Tmusicas, "ID", "Nome", musicaInPlayList.MusicaId);
+                ViewData["PlayListId"] = new SelectList(_context.TplayLists, "ID", "Nome", musicaInPlayList.PlayListId);
                 return View(musicaInPlayList);
             }
             else
@@ -216,8 +221,16 @@ namespace PayAndPlay.Controllers
             {
                 _context.TmusicaInPlayLists.Remove(musicaInPlayList);
             }
-
-            await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Musica removida com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Esta Musica nao pode ser removida! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
             return RedirectToAction(nameof(Index));
             }
             else

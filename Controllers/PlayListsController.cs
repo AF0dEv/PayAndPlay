@@ -43,6 +43,7 @@ namespace PayAndPlay.Controllers
 
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: PlayList nao Encontrada!";
                     return NotFound();
                 }
 
@@ -51,8 +52,10 @@ namespace PayAndPlay.Controllers
                     .FirstOrDefaultAsync(m => m.ID == id);
                 if (playList == null)
                 {
+                    TempData["Message"] = "Error: PlayList nao Encontrada!";
                     return NotFound();
                 }
+                TempData["Message"] = "Success: PlayList encontrada com Sucesso!";
                 return View(playList);
             }
             else
@@ -90,6 +93,7 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Add(playList);
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: PlayList criado com Sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 ViewData["DJId"] = new SelectList(_context.Tdjs, "ID", "UserName", playList.DJId);
@@ -148,6 +152,7 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(playList);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: PlayList atualizado com Sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -213,8 +218,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.TplayLists.Remove(playList);
                 }
-
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: PlayList removida com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Esta PlayList nao pode ser removida! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

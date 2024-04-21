@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
@@ -39,6 +40,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
 
@@ -47,9 +49,10 @@ namespace PayAndPlay.Controllers
                     .FirstOrDefaultAsync(m => m.ID == id);
                 if (dJ == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
-
+                TempData["Message"] = "Success: DJ encontrado com Sucesso!";
                 return View(dJ);
             }
             else
@@ -87,6 +90,7 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Add(dJ);
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: DJ adicionado com sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "ID", dJ.PerfilId);
@@ -106,12 +110,14 @@ namespace PayAndPlay.Controllers
             {
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
 
                 var dJ = await _context.Tdjs.FindAsync(id);
                 if (dJ == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", dJ.PerfilId);
@@ -135,6 +141,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id != dJ.ID)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
 
@@ -144,11 +151,13 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(dJ);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: DJ atualizado com sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
                         if (!DJExists(dJ.ID))
                         {
+                            TempData["Message"] = "Error: DJ nao encontrado!";
                             return NotFound();
                         }
                         else
@@ -175,6 +184,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
 
@@ -183,6 +193,7 @@ namespace PayAndPlay.Controllers
                     .FirstOrDefaultAsync(m => m.ID == id);
                 if (dJ == null)
                 {
+                    TempData["Message"] = "Error: DJ nao encontrado!";
                     return NotFound();
                 }
 
@@ -207,8 +218,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Tdjs.Remove(dJ);
                 }
-
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: DJ removido com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Este DJ nao pode ser removido! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

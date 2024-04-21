@@ -42,6 +42,7 @@ namespace PayAndPlay.Controllers
             {
                 if (id == null)
                 {
+                    TempData["Message"] = "Error: Utilizador nao Encontrado!";
                     return NotFound();
                 }
 
@@ -50,9 +51,10 @@ namespace PayAndPlay.Controllers
                     .FirstOrDefaultAsync(m => m.ID == id);
                 if (utilizador == null)
                 {
+                    TempData["Message"] = "Error: Utilizador nao Encontrado!";
                     return NotFound();
                 }
-
+                TempData["Message"] = "Success: Utilizador encontrado com Sucesso!";
                 return View(utilizador);
             }
             else
@@ -90,6 +92,7 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Add(utilizador);
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Utilizador criado com Sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", utilizador.PerfilId);
@@ -138,7 +141,8 @@ namespace PayAndPlay.Controllers
             {
                 if (id != utilizador.ID)
             {
-                return NotFound();
+                    TempData["Message"] = "Error: Utilizador nao Encontrado!";
+                    return NotFound();
             }
 
             if (ModelState.IsValid)
@@ -147,11 +151,13 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Update(utilizador);
                     await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Utilizador atualizado com Sucesso!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UtilizadorExists(utilizador.ID))
                     {
+                        TempData["Message"] = "Error: Utilizador nao Encontrado!";
                         return NotFound();
                     }
                     else
@@ -159,7 +165,7 @@ namespace PayAndPlay.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index));
             }
             ViewData["PerfilId"] = new SelectList(_context.Tperfis, "ID", "Tipo_Perfil", utilizador.PerfilId);
             return View(utilizador);
@@ -210,8 +216,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Tutilizadores.Remove(utilizador);
                 }
-
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Utilizador removido com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Este Utilizador nao pode ser removido! Por Favor, Contacte Admnistrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

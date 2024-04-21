@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
 
@@ -58,10 +60,11 @@ namespace PayAndPlay.Controllers
         {
             if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
             {
-                ViewBag.PLAYLISTS = _context.TplayLists.Find(int.Parse(id));
-                ViewBag.MUSICAS = _context.Tmusicas.Where(m => m.MusicasInPlayLists.Any(mp => mp.PlayListId == int.Parse(id)));
+                ViewBag.MIP = _context.TmusicaInPlayLists.Where(p => p.PlayListId == int.Parse(id)).Include(m => m.Musica).Include(p => p.PlayList);
                 return View();
             }
+            // resolver o problema do pedido que nao cai no dj certo
+
             else
             {
                 TempData["Message"] = "Error: Nao tem permissoes para aceder a esta pagina!";
@@ -73,9 +76,9 @@ namespace PayAndPlay.Controllers
         {
             if (HttpContext.Session.GetString("UTILIZADOR") != "" && HttpContext.Session.GetString("UTILIZADOR") != null && HttpContext.Session.GetString("PERFIL") == "1" && HttpContext.Session.GetString("ADMIN") == "false")
             {
-                PlayList playlist = _context.TplayLists.Where(p => p.MusicasInPlayLists.Any(mp => mp.MusicaId == id)).FirstOrDefault();
-                Musica musica = _context.Tmusicas.Find(id);
-                MusicaInPlayList mip = _context.TmusicaInPlayLists.Where(p => p.MusicaId == musica.ID && p.PlayListId == playlist.ID).FirstOrDefault();
+                MusicaInPlayList mip = _context.TmusicaInPlayLists.Find(id);
+                PlayList playlist = _context.TplayLists.Find(mip.PlayListId);
+                Musica musica = _context.Tmusicas.Find(mip.MusicaId);
                 Pedido pedido = new Pedido();
                 pedido.MusicaInPlayListId = mip.ID;
                 pedido.DJId = playlist.DJId;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PayAndPlay.Data;
 using PayAndPlay.Models;
@@ -224,9 +225,17 @@ namespace PayAndPlay.Controllers
                 {
                     _context.TmusicaInPlayLists.Remove(musicaInPlayList);
                 }
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Musica removida da PlayList com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Esta Musica nao pode ser removida da Playlist! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
 
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Error: Não tem permissões para aceder a esta pagina!";
                 return RedirectToAction(nameof(Index));
             }
             else

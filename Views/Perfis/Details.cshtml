@@ -9,12 +9,15 @@
 <h4>Perfil</h4>
 </div>
 <div>
+    @{
+        Html.RenderPartial("_Alert");
+    }
     <dl class="row">
         <dt class = "col-sm-2">
             Tipo Perfil
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tipo_Perfil)
+            @Html.DisplayFor(model => model.ID) - <span style="color:lightgray">@Html.DisplayFor(model => model.Tipo_Perfil)</span>
         </dd>
     </dl>
 </div>

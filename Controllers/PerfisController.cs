@@ -89,7 +89,7 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Add(perfil);
                     await _context.SaveChangesAsync();
-                    TempData["Message"] = "Success: Perfil criado!";
+                    TempData["Message"] = "Success: Perfil criado com Sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
                 return View(perfil);
@@ -148,6 +148,7 @@ namespace PayAndPlay.Controllers
                     {
                         _context.Update(perfil);
                         await _context.SaveChangesAsync();
+                        TempData["Message"] = "Success: Perfil atualizado com Sucesso!";
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -161,7 +162,6 @@ namespace PayAndPlay.Controllers
                             throw;
                         }
                     }
-                    TempData["Message"] = "Success: Perfil atualizado!";
                     return RedirectToAction(nameof(Index));
                 }
                 return View(perfil);
@@ -213,9 +213,16 @@ namespace PayAndPlay.Controllers
                 {
                     _context.Tperfis.Remove(perfil);
                 }
-
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Success: Perfil removido com sucesso !";
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Success: Perfil removido com sucesso!";
+                }
+                catch (DbUpdateException)
+                {
+                    TempData["Message"] = "Error: Este Perfil nao pode ser removido! Por Favor, Contacte Administrador!";
+                    return RedirectToAction(nameof(Index));
+                }
                 return RedirectToAction(nameof(Index));
             }
             else
